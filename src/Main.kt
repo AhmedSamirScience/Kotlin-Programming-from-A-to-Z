@@ -1,14 +1,155 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+/*
+ * Operator Name       Description                                      Examples
+ * ----------------------------------------------------------------------------------------
+ * ==                  Equals                                           3 == 3
+ *                     Tests if two values are equal
+ *
+ * !=                  Not equals                                       2 != 3
+ *                     Tests that two values are not equal to each
+ *                     other
+ *
+ * <                   Less than                                        2 < 3
+ *                     Tests to see if the left-hand value is less
+ *                     than the right-hand value
+ *
+ * >                   Greater than                                     3 > 2
+ *                     Tests if the left-hand value is greater
+ *                     than the right-hand value
+ *
+ * <=                  Less than or equal to                            3 <= 4
+ *                     Tests if the left-hand value is less than
+ *                     or equal to the right-hand value
+ *
+ * >=                  Greater than or equal to                         5 >= 4
+ *                     Tests if the left-hand value is greater
+ *                     than or equal to the right-hand value
+ *
+ * @author Ahmed Samir
+ */
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+/*
+ * Operator Name       Description                                          Examples
+ * ----------------------------------------------------------------------------------------
+ * &                   And                                                  (3 < 4) & (5 > 4)
+ *                     Returns true if both left and right are true
+ *
+ * &&                  Short cut and                                        (3 < 4) && (5 > 4)
+ *                     Short cut version of the and operator; the right
+ *                     hand operand is only evaluated if the left hand
+ *                     operand is true
+ *                     In most cases, && is preferred in boolean expressions because of its short-circuiting behavior, which can lead to better performance and prevent unnecessary evaluations.
+ *
+ *
+ * |                   Or                                                   (3 < 4) | (3 > 5)
+ *                     Returns true if either the left or the right is true
+ *
+ * ||                  Short cut or                                         (3 < 4) || (3 > 5)
+ *                     Short cut version of the or operator; the right
+ *                     hand operand is only evaluated if the left hand
+ *                     operand is false
+ *                     Using || is generally preferred in boolean expressions because of its short-circuiting behavior, which can improve performance and prevent unnecessary evaluations when the left-hand condition is already true.
+ *
+ *
+ * ^                   Exclusive or                                         (2 < 3) ^ (5 < 2)
+ *                     Indicates XOR or exclusive OR; it will only
+ *                     evaluate to true if only one of the operands is
+ *                     true; if both operands are true then the XOR test
+ *                     evaluates to false
+ *
+ * !                   Not                                                  !flag
+ *                     Returns true if the value being tested is false
+ * @author Ahmed Samir
+ */
+
+fun main() {
+
+    //region and Logical Operator
+    // Using and operator
+    //it must be two conditions equals to true
+    println("\t (and) Logical Operator")
+    val resultAndTrue = (3 < 4) and (5 > 4)
+    println("Result of (3 < 4) and (5 > 4): $resultAndTrue") // true
+    val resultAndFalseFirstCase = (3 < 4) and (3 > 4)
+    println("Result of (3 < 4) and (3 > 4): $resultAndFalseFirstCase") // false
+    val resultAndFalseSecondCase = (5 < 4) and (5 > 4)
+    println("Result of (5 < 4) and (5 > 4): $resultAndFalseSecondCase") // false
+    println("\n")
+    //endregion
+
+    //region && (Short-circuit logical &&) operator
+    // Using && (Short cut and) operator
+    //if the compiler see first the left hand side condition and if it equals to true then it will evaluate the right hand side. therefore if the left hand side equals to true then it will see the right and do the result with true if the right hand side equals to true then the result is equals to ture.
+    //hna lazem yshouf el awl el left hand side equals to true 3lshan yshouf el right hand side
+    println("\t (&&) Logical Operator")
+    val resultShortCutAndZeroCase = (3 < 4) && (5 > 4)
+    println("Result of (3 < 4) && (5 > 4): $resultShortCutAndZeroCase") // true
+    val resultShortCutAndFirstCase = (3 < 4) && (3 > 4)
+    println("Result of (3 < 4) && (5 > 4): $resultShortCutAndFirstCase") // false
+    val resultShortCutAndSecondCase = (5 < 4) && (5 > 4)
+    println("Result of (5 < 4) && (5 > 4): $resultShortCutAndSecondCase") // false
+    val resultShortCutAndThirdCase = (5 < 4) && (3 > 4)
+    println("Result of (5 < 4) && (3 > 4): $resultShortCutAndThirdCase") // false
+    println("\n")
+    //endregion
+
+
+    // Using or operator
+    //if the compiler found on of side is equals to true then it will generate the result with true.
+    println("\t (or) Logical Operator")
+    val resultOrTrue = (3 < 4) or (5 > 4)
+    println("Result of (3 < 4) or (5 > 4): $resultOrTrue") // true
+
+    val resultOrFalseBothCases = (3 > 4) or (5 > 6)
+    println("Result of (3 > 4) or (5 > 6): $resultOrFalseBothCases") // false
+
+    val resultOrFalseFirstCase = (3 > 4) or (5 > 4)
+    println("Result of (3 > 4) or (3 > 4): $resultOrFalseFirstCase") // true
+    println("\n")
+    //endregion
+
+
+    // Using || (Short-circuit logical OR) operator
+    //if the compiler see first the left hand side condition and if it equals to false then it will evaluate the right hand side. therefore if the left hand side equals to false then it will see the right hand side.
+    //hna lazem yshouf el awl el left hand side equals to false 3lshan yshouf el right hand side w law kan b fasle bardo el right hand side yb2a el final hykon b false w law la2a el right hand side b true yb2a el final hykon b-true bas zai m2oltlk howa lazem yt2kd mn el left hand side enha b false 3lshan yshouf el right hand side ymken tkon b-true
+
+    println("\t (||) Logical Operator")
+    val resultShortCutOrZeroCase = (3 < 4) || (5 > 4)
+    println("Result of (3 < 4) || (5 > 4): $resultShortCutOrZeroCase") // true
+
+    val resultShortCutOrFirstCase = (3 < 4) || (3 > 4)
+    println("Result of (3 < 4) || (3 > 4): $resultShortCutOrFirstCase") // true
+
+    val resultShortCutOrSecondCase = (5 < 4) || (5 > 4)
+    println("Result of (5 < 4) || (5 > 4): $resultShortCutOrSecondCase") // true
+
+    val resultShortCutOrThirdCase = (5 < 4) || (3 > 4)
+    println("Result of (5 < 4) || (3 > 4): $resultShortCutOrThirdCase") // false
+    println("\n")
+    //endregion
+
+    //region && - || in the if condition
+    if((5 < 4) && (5 > 4))
+        println("&& Ture")
+        else
+        println("&& false")
+
+    if((5 < 4) and (5 > 4))
+        println("and Ture")
+    else
+        println("&& false")
+
+
+    if((5 < 4) || (5 > 4))
+        println("|| Ture")
+    else
+        println("|| false")
+
+    if((5 < 4) or (5 > 4))
+        println("or Ture")
+    else
+        println("or false")
+
+    //endregion
+
+
 }
