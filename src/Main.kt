@@ -58,6 +58,8 @@
  *
  * !                   Not                                                  !flag
  *                     Returns true if the value being tested is false
+ *
+ * Please, be aware that if you will use shortcut && or shortcut || this is useful because of the compiler will not waste memory and will not moving forward with the rest of the condition as long asl the left hand side is not meet the required rule so it is beneficial if you use it .
  * @author Ahmed Samir
  */
 
