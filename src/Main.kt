@@ -5,6 +5,8 @@
  * means that they can hold an integer you know to only be positive in an unsigned type
  * more efficiently than in a regular signed integer type
  *
+ * Note: val minusOne: Uint = -1U (Illegal can’t have a negative unsigned int)
+ *
  *
  * Unsigned Integer Types in Kotlin
  *
