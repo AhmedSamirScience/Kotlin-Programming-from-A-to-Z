@@ -1,7 +1,7 @@
 /**
  * Unsigned integers are integers that can only contain zero or positive integers (they
  * cannot hold negative numbers). This is because they do not use any memory to store
- * the sign (+ or −) with the number (as they can only be non negative numbers). This
+ * the sign (+ or −) with the number (as they can only be non-negative numbers). This
  * means that they can hold an integer you know to only be positive in an unsigned type
  * more efficiently than in a regular signed integer type
  *
