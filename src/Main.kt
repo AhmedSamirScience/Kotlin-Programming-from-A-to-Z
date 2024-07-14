@@ -1,4 +1,6 @@
-/*
+
+/**
+ * (Comparison Operators)
  * Operator Name       Description                                      Examples
  * ----------------------------------------------------------------------------------------
  * ==                  Equals                                           3 == 3
@@ -27,7 +29,8 @@
  * @author Ahmed Samir
  */
 
-/*
+/**
+ * (Logical Operators)
  * Operator Name       Description                                          Examples
  * ----------------------------------------------------------------------------------------
  * &                   And                                                  (3 < 4) & (5 > 4)
@@ -63,6 +66,56 @@
  * @author Ahmed Samir
  */
 
+
+/**
+ * (Numeric Operators)
+ * Operator | Description                                  | Example
+ * ---------|----------------------------------------------|-------------------------
+ * +        | Performs addition or concatenation            | println(1 + 2)
+ *          |                                              | println(2.2 + 3.4)
+ *          |                                              | println("Hello " + "World")
+ *          |                                              | println("Hello" + 2)
+ * ---------|----------------------------------------------|-------------------------
+ * -        | Performs subtraction                         | println(2 - 1)
+ *          |                                              | println(2.1 - 1)
+ *          |                                              | println(3 - 1.5)
+ * ---------|----------------------------------------------|-------------------------
+ * *        | Performs multiplication                      | println(2 * 3)
+ *          |                                              | println(2.5 * 3.4)
+ *          |                                              | println(3 * 2.5)
+ * ---------|----------------------------------------------|-------------------------
+ * /        | Performs division                            | println(6 / 3)
+ *          |                                              | println(5 / 2)
+ *          |                                              | println(5 / 2.3)
+ *          |                                              | println(3.4 / 1.2)
+ * ---------|----------------------------------------------|-------------------------
+ * %        | Performs modulus (remainder)                 | println(6 % 3)
+ *          |                                              | println(5 % 2)
+ *          |                                              | println(5 % 2.3)
+ *          |                                              | println(3.4 % 1.2)
+ * ---------|----------------------------------------------|-------------------------
+ * ++       | Increment operator                          | var count = 5
+ *          |                                              | count++
+ *          |                                              | println(count) // Outputs: 6
+ * ---------|----------------------------------------------|-------------------------
+ * --       | Decrement operator                          | var count = 5
+ *          |                                              | count--
+ *          |                                              | println(count) // Outputs: 4
+ */
+
+/**
+ * (Assignment Operators)
+ * Operator | Description                           | Examples
+ * ---------|---------------------------------------|---------------------------
+ * +=       | Equivalent of x = x + y               | x += y
+ * -=       | Equivalent of x = x - y               | x -= y
+ * *=       | Equivalent of x = x * y               | x *= y
+ * /=       | Equivalent of x = x / y               | x /= y
+ * %=       | Equivalent of x = x % y               | x %= y
+ */
+
+
+
 fun main() {
 
     //region and Logical Operator
@@ -95,7 +148,8 @@ fun main() {
     //endregion
 
 
-    // Using or operator
+
+    //region Using or operator
     //if the compiler found on of side is equals to true then it will generate the result with true.
     println("\t (or) Logical Operator")
     val resultOrTrue = (3 < 4) or (5 > 4)
@@ -109,8 +163,7 @@ fun main() {
     println("\n")
     //endregion
 
-
-    // Using || (Short-circuit logical OR) operator
+    //region Using || (Short-circuit logical OR) operator
     //if the compiler see first the left hand side condition and if it equals to false then it will evaluate the right hand side. therefore if the left hand side equals to false then it will see the right hand side.
     //hna lazem yshouf el awl el left hand side equals to false 3lshan yshouf el right hand side w law kan b fasle bardo el right hand side yb2a el final hykon b false w law la2a el right hand side b true yb2a el final hykon b-true bas zai m2oltlk howa lazem yt2kd mn el left hand side enha b false 3lshan yshouf el right hand side ymken tkon b-true
 
@@ -128,6 +181,8 @@ fun main() {
     println("Result of (5 < 4) || (3 > 4): $resultShortCutOrThirdCase") // false
     println("\n")
     //endregion
+
+
 
     //region && - || in the if condition
     if((5 < 4) && (5 > 4))
@@ -152,6 +207,5 @@ fun main() {
         println("or false")
 
     //endregion
-
 
 }
