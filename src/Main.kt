@@ -23,35 +23,39 @@ fun main() {
 
     //region UShort example
     println("\n(UShort example)")
+    val intToUShort: UShort = 10.toUShort()
     val ushortMin: UShort = UShort.MIN_VALUE
     val ushortMax: UShort = UShort.MAX_VALUE
     val ushortExample: UShort = 12345u
-    println("UShort - Min value: $ushortMin, Max value: $ushortMax, Example value: $ushortExample")
+    println("UShort - Min value: $ushortMin, Max value: $ushortMax, Example value: $ushortExample, Converted from Int: $intToUShort")
     //endregion
 
     //region UByte example
     println("\n(UByte example)")
+    val intToUByte: UByte = 10.toUByte()
     val ubyteMin: UByte = UByte.MIN_VALUE
     val ubyteMax: UByte = UByte.MAX_VALUE
     val ubyteExample: UByte = 123u
-    println("UByte - Min value: $ubyteMin, Max value: $ubyteMax, Example value: $ubyteExample")
+    println("UByte - Min value: $ubyteMin, Max value: $ubyteMax, Example value: $ubyteExample, Converted from Int: $intToUByte")
     //endregion
 
     //region UInt example
     println("\n(UInt example)")
+    val intToUInt: UInt = 10.toUInt()
     val uintMin: UInt = UInt.MIN_VALUE
     val uintMax: UInt = UInt.MAX_VALUE
     val uintExample: UInt = 123456789u
-    println("UInt - Min value: $uintMin, Max value: $uintMax, Example value: $uintExample")
+    println("UInt - Min value: $uintMin, Max value: $uintMax, Example value: $uintExample, Converted from Int: $intToUInt")
 
     //endregion
 
     //region ULong example
     println("\n(ULong example)")
+    val intToULong: ULong = 10.toULong()
     val ulongMin: ULong = ULong.MIN_VALUE
     val ulongMax: ULong = ULong.MAX_VALUE
     val ulongExample: ULong = 1234567890123456789uL
-    println("ULong - Min value: $ulongMin, Max value: $ulongMax, Example value: $ulongExample")
+    println("ULong - Min value: $ulongMin, Max value: $ulongMax, Example value: $ulongExample, Converted from Int: $intToULong")
     //endregion
 
 }
