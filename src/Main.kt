@@ -89,7 +89,7 @@ fun main() {
     println("(Comparing Reference Type)")
     val x: Any = 32
     when (x) {
-        is Int -> println("Its a Int’’)")
+        is Int -> println("Its a Int")
         is Double -> println("Its a Double")
         is Boolean -> println("Its a Boolean")
         is String -> println("Its a String")
@@ -99,16 +99,16 @@ fun main() {
     println("\n")
     //endregion
 
-    //region Comparing String
+    //region Comparing String but with have more than one statement associated with each condition
     /**
      * If you need to have more than one statement associated with each condition within
      * a when expression, you can use curly brackets to group them together
      */
-    println("(Comparing String)")
+    println("(Comparing String but with have more than one statement associated with each condition)")
     val total = 34
     when (total) {
         0 -> {
-            print("Its Zero")
+            println("Its Zero")
             println("Never mind")
         }
         in 1..5 -> println("Not Bad")
