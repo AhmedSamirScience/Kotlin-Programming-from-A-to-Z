@@ -1,14 +1,18 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+
+fun main() {
+
+   /**
+    * Kotlin includes another loop statement called the repeat statement. This is similar
+    * to a for loop in that it is a counted loop. That is the number of times the loop will
+    * be repeated is known at the start. However, it differs from a for loop in that the loop
+    * variable is not made explicit. This is useful in situations where you know you want
+    * to loop a certain number of times, but you do not need to reference the loop index.
+    * The repeat loop has the following syntax
+    */
+    repeat(3) {
+        print("Hello, ")
     }
+    println()
+
 }
