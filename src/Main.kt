@@ -1,14 +1,34 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/**
+ * Kotlin provides shorthand syntax for functions with a single expression as the body. This shorthand works for both named and anonymous functions.
+ *
+ * For a named function:
+ * fun name(parameter list) = single expression
+ *
+ * For an anonymous function:
+ * fun(parameter list) = single expression
+ *
+ * In both cases, the compiler automatically figures out the return type from the single expression in the function body.
+ */
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+    /**
+     * The return type is automatically inferred by the compiler from the single expression in the function body. For example, the shorthand function:
+     */
+    fun incrementer(x: Int) = x + 1
+
+    /**
+     * Here, the return type is Int, inferred from the expression x + 1. Explicitly defining the return type can be good practice for clarity, like this:
+     */
+    fun incrementerButWeDefinedReturnType(x: Int): Int = x * 3
+
+    /**
+     * An example of using this shorthand function definition for an anonymous function below.
+     * The return type is inferred from adding one to the integer i. You can use this function normally.
+     */
+    val adder = fun(i: Int) = i + 1
+
+    println(incrementer(5))
+    println(incrementerButWeDefinedReturnType(5))
+    println(adder(5))
+
 }
