@@ -1,14 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+/**
+ * Kotlin allows passing an arbitrary number of arguments into a function using the `vararg` keyword to define a parameter list of arbitrary length.
+ */
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+fun main() {
+
+    /**
+     * The `vararg` keyword can only be applied to one parameter in a function.
+     * If it's not the last parameter, subsequent parameters must use the named argument syntax.
+     */
+
+    greeter4("John")
+    greeter4("John", "Denise")
+    greeter4("John", "Denise", "Phoebe", "Adam")
+    greeter4("John", "Denise", "Phoebe", "Adam", "Jasmine", "Gryff")
+
+    greeter4WithInt("ahmed", "Samir", number = 1)
+}
+
+
+fun greeter4(vararg params: String) {
+    params.forEach { print("$it , ") }
+    println()
+}
+
+fun greeter4WithInt(vararg params: String, number: Int ) {
+    params.forEach { print("$it , ") }
+    println()
 }
