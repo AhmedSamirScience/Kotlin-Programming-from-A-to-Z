@@ -1,14 +1,36 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/**
+ * Using position to assign values to parameters is simple but can be problematic with multiple parameters, especially with defaults.
+ * Named parameter passing solves this by assigning values to parameters by name, making position irrelevant.
+ */
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+    /**
+     * With named parameters, the order of parameters doesn't matter, allowing you to change their order freely.
+     */
+    greeter3(message="Have a Nice Day!", name="Jasmine")
+
+
+    /**
+     * Mixing named and positioned arguments is not allowed (Compilation Error)
+     */
+    //greeter3(message="Have a Nice Day!", "Jasmine")
+
+
+    println("max(x=3, 4): " + max(x=3, 4))
+
+
+    /**
+     * Mixing named and positioned arguments is not allowed (Compilation Error)
+     */
+    //println("max(x=3, 4): " + max(y=3, 4))
+
 }
+
+fun greeter3(name: String,
+             title: String = "Dr",
+             prompt: String = "Welcome",
+             message: String = "Live Long and Proper") {
+    println("$prompt $title $name - $message")
+}
+
+fun max(x: Int, y: Int ): Int = if (x > y) { x } else { y }
