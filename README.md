@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Kotlin KDoc and Special Characters Demonstration</title>
-</head>
 <body>
 
 <h1>Kotlin KDoc and Special Characters Demonstration</h1>
