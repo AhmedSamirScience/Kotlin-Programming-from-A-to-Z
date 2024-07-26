@@ -1,14 +1,17 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/**
+ * In Kotlin, all function parameters are `val`, meaning they cannot be reassigned once the function is invoked.
+ * This differs from Java, where reassignment is possible.
+ *
+ *
+ */
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+}
+
+
+fun add(i: Int) {
+    /**
+     * This protects the programmer from accidentally reassigning a parameter's value and using the new value later, while expecting the original value.
+     */
+    //i = i + 1 // won't compile i is a val
 }
