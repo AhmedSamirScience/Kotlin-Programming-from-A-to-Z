@@ -1,14 +1,67 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+/**
+ * Calling a function has some performance cost. For simple functions, like adding one to a number, this cost can be high.
+ * Kotlin solves this with the inline keyword, which allows the compiler to replace the function call with the actual code inside the function.
+ */
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+/**
+ * Video Reference: https://www.youtube.com/watch?v=GLLI8h67ryo
+ */
+fun main() {
+
+    //region if we don't use inline function
+    /**
+     * if we don't use the inline function with tech
+     *
+     * fun guide(){
+     *     print ("guide start")
+     *     teach()
+     *     print ("guide end")
+     * }
+     * fun teach() {
+     *     print("teach")
+     * }
+     *
+     * (((the decompiler will look like the below)))
+     *
+     * public void guide ()
+     * {
+     *     System.out.print("guide start");
+     *     teach();
+     *     System.out.print("guide end");
+     * }
+     * public void teach ()
+     * {
+     *     System.out.print("teach");
+     * }
+     */
+    //endregion
+
+    //region if we use inline function
+    /**
+     * if we use the inline function with tech
+     *
+     * fun guide(){
+     *     print ("guide start")
+     *     teach()
+     *     print ("guide end")
+     * }
+     * inline fun teach() {
+     *     print("teach")
+     * }
+     *
+     * (((the decompiler will look like the below)))
+     *
+     * public void guide ()
+     * {
+     *     System.out.print("guide start");
+     *     System.out.print("teach");
+     *     System.out.print("guide end");
+     * }
+     */
+    //endregion
+
 }
+
+
+
+
