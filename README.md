@@ -1,73 +1,116 @@
-# Kotlin Programming from A to Z
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<body>
 
-## Introduction
+<h1>Kotlin Function References with Box Operator Demonstration</h1>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<p>This repository contains a simple Kotlin application that demonstrates the use of the box operator (<code>::</code>) to obtain references to named functions. The main function shows how to reference and invoke named functions using the <code>::</code> operator.</p>
 
-## What You Will Learn
+<h2>Code Overview</h2>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<pre>
+<code>
+fun main() {
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    /**
+     * The box operator (::) can be used to obtain a reference to a named function.
+     * By default, when you access a named function, it must be invoked.
+     * It is not possible to simply reference the function, as shown below:
+     */
+    println(increase(5))
+    /**
+     * Attempting this will result in a compilation error: Function invocation 'increase(...)' expected.
+     */
+    //val inc = increase
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    /**
+     * However, using the box operator (::), you can reference a named function without invoking it. The modified program is as follows:
+     */
+    val inc = ::increase // obtain reference to function
+    println(inc)
+    println(inc(5))
+    /**
+     * In this program, we obtain a callable reference to the increase() function and store it in val inc.
+     * This means that both increase and inc reference the same function.
+     * Calling either increase(5) or inc(5) will execute the same block of code and produce the same result, 6.
+     *
+     *
+     * The output from this program is:
+     * 6
+     * fun increase(kotlin.Int): kotlin.Int
+     * 6
+     *
+     *
+     * The reference held in inc points to the increase function, which takes an Int and returns an Int.
+     * Thus, the type of val inc is (Int) -> Int.
+     *
+     */
+}
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+fun increase(i: Int) = i + 1
+</code>
+</pre>
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+<h3>Function References with Box Operator in Kotlin</h3>
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+<p>The box operator (<code>::</code>) in Kotlin allows you to obtain a reference to a named function without invoking it. This can be useful for creating aliases for functions or passing functions as arguments. In the example above:</p>
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+<ul>
+    <li><strong>Direct Invocation:</strong> The <code>increase</code> function is invoked directly with an argument:
+        <pre><code>println(increase(5))</code></pre>
+        This prints the result of the function, which is 6.
+    </li>
+    <li><strong>Function Reference:</strong> The <code>increase</code> function is referenced using the box operator and assigned to the variable <code>inc</code>:
+        <pre><code>val inc = ::increase</code></pre>
+        This allows <code>inc</code> to be used as a reference to the <code>increase</code> function.
+    </li>
+    <li><strong>Calling the Reference:</strong> The function reference <code>inc</code> can be invoked with an argument:
+        <pre><code>
+println(inc)
+println(inc(5))
+        </code></pre>
+        This prints the function reference itself and the result of invoking the function through the reference.
+    </li>
+</ul>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<h3>Benefits of Using the Box Operator</h3>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<p>Using the box operator provides several benefits:</p>
 
-## Why This Repository?
+<ul>
+    <li><strong>Function Aliases:</strong> You can create aliases for functions, making it easier to reference them in different contexts.</li>
+    <li><strong>Passing Functions:</strong> Function references can be passed as arguments to other functions, enabling more flexible and reusable code.</li>
+    <li><strong>Code Clarity:</strong> Referencing functions by name can make code more readable and easier to understand.</li>
+</ul>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h2>How to Run</h2>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of the function references and lambda functions.</li>
+</ol>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<h2>Expected Output</h2>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<pre>
+<code>
+6
+fun increase(kotlin.Int): kotlin.Int
+6
+</code>
+</pre>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h2>License</h2>
 
-## Getting Started
+<p>This project is licensed under the MIT License.</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<h2>Author</h2>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
