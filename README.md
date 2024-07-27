@@ -1,73 +1,142 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Higher-Order Functions Demonstration</h1>
 
-## Introduction
+<p>This repository contains a simple Kotlin application that demonstrates the use of higher-order functions, which are functions that can take other functions as parameters or return functions as results. Higher-order functions are a key concept in functional programming, providing flexibility and reusability.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * Why Use Higher-Order Functions?
+ * You might wonder why to use a higher-order function instead of directly calling functions like increment or mult. For example:
+ * multi(10)
+ *
+ * This has the same effect as:
+ * processor(10, mult)
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+fun main() {
+    /**
+     * The first approach seems simpler and more efficient. However, higher-order functions are powerful because they allow us to apply an unknown function to data at a later time.
+     * This creates reusable code for when the specific function is determined later.
+     *
+     * Example: Tax Calculation
+     * Consider calculating tax based on a salary. The exact tax calculation depends on external factors, so we need a flexible function:
+     */
+    val tax = calculateTax(45000.0, ::simpleTaxCalculator)
+    println("Tax payable: $tax")
+    /**
+     * simpleTaxCalculator multiplies a number by 0.3.
+     * calculateTax takes a salary and a function to calculate the tax.
+     * In main, we pass 45000.0 as the salary and reference simpleTaxCalculator using the :: operator.
+     *
+     * Output:
+     * Tax payable: 13500.0
+     */
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    /**
+     * We can also use an anonymous function or a lambda for tax calculation:
+     */
+    val tax1 = calculateTax(45000.0) { amount -> amount * 0.25 }
+    println("Tax payable: $tax1")
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    /**
+     * Using trailing lambda syntax, this calculates 25% tax:
+     * Output:
+     * Tax payable: 11250.0
+     */
+}
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+/**
+ * Simple tax calculation function.
+ * @param amount the amount to be taxed
+ * @return the calculated tax
+ */
+fun simpleTaxCalculator(amount: Double) = amount * 0.3
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+/**
+ * Higher-order function for tax calculation.
+ * @param salary the salary to be taxed
+ * @param func the tax calculation function
+ * @return the calculated tax
+ */
+fun calculateTax(salary: Double, func: (Double) -> Double): Double {
+    return func(salary)
+}
+</code>
+</pre>
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+<h3>Why Use Higher-Order Functions?</h3>
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+<p>Higher-order functions are powerful because they allow us to apply an unknown function to data at a later time, creating reusable code for when the specific function is determined later. This flexibility makes higher-order functions essential in scenarios where the exact function to be applied is not known upfront.</p>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<h3>Example: Tax Calculation</h3>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<p>Consider calculating tax based on a salary. The exact tax calculation depends on external factors, so we need a flexible function:</p>
 
-## Why This Repository?
+<ul>
+    <li><strong>Using a Named Function:</strong> We define a simple tax calculator that multiplies a number by 0.3 and use it with the <code>calculateTax</code> function.
+        <pre><code>
+val tax = calculateTax(45000.0, ::simpleTaxCalculator)
+println("Tax payable: $tax")
+        </code></pre>
+        Output:
+        <pre><code>
+Tax payable: 13500.0
+        </code></pre>
+    </li>
+    <li><strong>Using a Lambda Function:</strong> We can also use an anonymous function or a lambda for tax calculation.
+        <pre><code>
+val tax1 = calculateTax(45000.0) { amount -> amount * 0.25 }
+println("Tax payable: $tax1")
+        </code></pre>
+        Output:
+        <pre><code>
+Tax payable: 11250.0
+        </code></pre>
+    </li>
+</ul>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h3>Benefits of Higher-Order Functions</h3>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<p>Using higher-order functions provides several benefits:</p>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<ul>
+    <li><strong>Reusability:</strong> Higher-order functions enable you to create reusable and composable code blocks.</li>
+    <li><strong>Flexibility:</strong> You can pass different functions to higher-order functions, making your code more flexible and adaptable.</li>
+    <li><strong>Conciseness:</strong> Using lambdas and higher-order functions can lead to more concise and readable code.</li>
+</ul>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<h2>How to Run</h2>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of the higher-order function examples.</li>
+</ol>
 
-## Getting Started
+<h2>Expected Output</h2>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<pre>
+<code>
+Tax payable: 13500.0
+Tax payable: 11250.0
+</code>
+</pre>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<h2>License</h2>
 
-## License
+<p>This project is licensed under the MIT License.</p>
 
-This project is licensed under the MIT License.
+<h2>Author</h2>
 
-## Author
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
