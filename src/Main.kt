@@ -1,14 +1,43 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+
+
+fun main() {
+
+    /**
+     * Including round brackets () after val or var func executes the anonymous or lambda or named function.
+     * If the brackets are omitted (left out), it references the function itself rather than executing it.
+     * Using the :: operator allows referencing a function by name, as shown in:
+     */
+    val message2 = ::getMessage
+
+    /**
+     * The output function getMessage (Kotlin reflection is not available) indicates message2 is a reference to the getMessage function, not its result.
+     * This means message2 acts as an alias for getMessage().
+     */
+    println(message2)
+
+
+    /**
+     * Running either getMessage() or message2() executes the function by accessing its memory location and running the code.
+     */
+
+
+    /**
+     * These have two implications:
+     * 1- We can create aliases for functions.
+     * 2- We can pass function references around.
+     *
+     * For example, using a lambda function:
+     * Here, func is a lambda function taking no parameters and returning Unit.
+     * Assigning func to val func1 makes both references to the same lambda function and of the same type.
+     */
+    val func: () -> Unit = { println("Hello World") }
+    val func1 = func
+    func()
+    func1()
+
+}
+
+fun getMessage(): String {
+    return "Hello Kotlin World!"
 }
