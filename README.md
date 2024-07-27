@@ -1,73 +1,159 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Higher-Order Functions Demonstration</h1>
 
-## Introduction
+<p>This repository contains a simple Kotlin application that demonstrates the concept of higher-order functions, which are functions that can take other functions as parameters or return functions as results. Higher-order functions are a key concept in functional programming.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * Higher Order Function Concepts:
+ * Since we can assign a function reference to a `val` or `var`, we can also pass a function reference as an argument to another function.
+ * Functions that do this are called Higher-Order Functions, a key concept in Functional Programming.
+ *
+ * In Kotlin, Higher-Order Functions (Higher-Order Functions are functions that do at least one of the following (and may do both)):
+ * - Take one or more functions as a parameter.
+ * - Return a function as a result.
+ *
+ * All other functions are Higher-order functions.
+ * Many functions in the Kotlin libraries are higher-order functions, and once you recognize this pattern, you'll see it frequently in various libraries.
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+fun main() {
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    //region Higher Order Function Example
+    /**
+     * For example, we can define a function to increment a value by 1 or a function to multiply an integer by itself and use these functions with processor():
+     */
+    // Anonymous function
+    val increment = fun(i: Int) = i + 1
+    println(processor(5, increment))
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    // Lambda function
+    val mult: (Int) -> Int = { x -> x * x }
+    println(processor(5, mult))
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    /**
+     * In this example, we use both an anonymous function and a lambda function as parameters to processor().
+     *
+     * The output from this program is:
+     * 6
+     * 25
+     */
+    //endregion
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+    println("-----------")
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    //region Higher Order Functions and Lambdas (Inline Lambda and Trailing Lambda Syntax)
+    /**
+     * It's common to define the lambda function for a Higher-Order Function at the point of invocation. Here's an example:
+     */
+    // Lambda declared inline
+    println(processor(5, { x -> x - 1 }))
+    /**
+     * This generates the output:
+     * 4
+     */
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+    /**
+     * This pattern is so common in Kotlin that it provides a special syntax called Trailing Lambda Syntax.
+     * This allows the lambda to be defined after the function parameters, as long as the lambda is the last parameter in the Higher-Order Function's parameter list. This is the preferred Kotlin style:
+     */
+    // Idiomatic Kotlin form
+    println(processor(5) { x -> x - 1 })
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+    /**
+     * Kotlin also allows for an even shorter form using an implicit it parameter, if there is just one parameter specified:
+     */
+    // Short hand form - only available if just one parameter
+    println(processor(5) { it - 1 })
+    /**
+     * This is a concise and idiomatic way to define lambdas in Kotlin.
+     */
+    //endregion
+}
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+/**
+ * Consider the higher-order function processor(). This function takes an integer and another function as parameters.
+ * Within processor(), the function passed in as a parameter is applied to the integer parameter, and the result is returned:
+ */
+// Takes a function and an int
+fun processor(x: Int, func: (Int) -> Int): Int {
+    return func(x)
+}
+/**
+ * The processor function is higher-order because its behavior and result depend on the function passed into it.
+ */
+</code>
+</pre>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<h3>Higher-Order Functions in Kotlin</h3>
 
-## Why This Repository?
+<p>Higher-order functions are functions that can take other functions as parameters or return functions as results. This is a fundamental concept in functional programming. In the example above:</p>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<ul>
+    <li><strong>Function Reference:</strong> The <code>increment</code> variable is an anonymous function that increments an integer by 1.
+        <pre><code>val increment = fun(i: Int) = i + 1</code></pre>
+        It is passed to the <code>processor</code> function, which applies it to the integer 5.
+    </li>
+    <li><strong>Lambda Function:</strong> The <code>mult</code> variable is a lambda function that multiplies an integer by itself.
+        <pre><code>val mult: (Int) -> Int = { x -> x * x }</code></pre>
+        It is also passed to the <code>processor</code> function.
+    </li>
+    <li><strong>Inline Lambda:</strong> A lambda function can be defined inline when calling a higher-order function.
+        <pre><code>println(processor(5, { x -> x - 1 }))</code></pre>
+    </li>
+    <li><strong>Trailing Lambda Syntax:</strong> Kotlin allows trailing lambda syntax for higher-order functions, where the lambda is defined after the function parameters.
+        <pre><code>println(processor(5) { x -> x - 1 })</code></pre>
+    </li>
+    <li><strong>Short Hand Form:</strong> If the lambda has only one parameter, Kotlin allows the use of an implicit <code>it</code> parameter.
+        <pre><code>println(processor(5) { it - 1 })</code></pre>
+    </li>
+</ul>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<h3>Benefits of Higher-Order Functions</h3>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<p>Using higher-order functions provides several benefits:</p>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<ul>
+    <li><strong>Reusability:</strong> Higher-order functions enable you to create reusable and composable code blocks.</li>
+    <li><strong>Flexibility:</strong> You can pass different functions to higher-order functions, making your code more flexible and adaptable.</li>
+    <li><strong>Conciseness:</strong> Using lambdas and higher-order functions can lead to more concise and readable code.</li>
+</ul>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h2>How to Run</h2>
 
-## Getting Started
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of the higher-order function examples.</li>
+</ol>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<h2>Expected Output</h2>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<pre>
+<code>
+6
+25
+-----------
+4
+4
+4
+</code>
+</pre>
 
-## License
+<h2>License</h2>
 
-This project is licensed under the MIT License.
+<p>This project is licensed under the MIT License.</p>
 
-## Author
+<h2>Author</h2>
 
-**Ahmed Samir** - Software Engineer
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
