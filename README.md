@@ -1,73 +1,116 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin KDoc Demonstration</h1>
 
-## Introduction
+<p>This repository contains a simple Kotlin application that demonstrates the use of KDoc. KDoc is used to document classes, properties, and member functions in Kotlin, explaining their purpose and any important points.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * Providing KDoc
+ * KDoc is used to document classes, properties, and member functions in Kotlin, explaining their purpose and any important points. KDoc comments start with /** and end with */, with each line optionally beginning with an asterisk.
+ *
+ * By convention, the first paragraph is a summary description, and the following text is a detailed description. IntelliJ can use this summary to provide a popup with more information.
+ *
+ * Block tags start on a new line with the @ character. Here's an example for the Person class:
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+/**
+ * This is a simple class representing information
+ * about a person.
+ *
+ * @property name the name of this person.
+ * @property age the age of this person.
+ * @constructor Creates a new person.
+ *
+ * @author John Hunt
+ * @since 1.0
+ */
+class Person(val name: String = "", var age: Int = 0) {
+    override fun toString() = "Person($name, $age)"
+}
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+/**
+ * This KDoc provides a clear and structured way to document the Person class and its properties.
+ */
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+fun main() {
+    val person = Person("John Doe", 30)
+    println(person)
+}
+</code>
+</pre>
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+<h3>Providing KDoc</h3>
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+<p>KDoc is used to document classes, properties, and member functions in Kotlin, explaining their purpose and any important points. KDoc comments start with <code>/**</code> and end with <code>*/</code>, with each line optionally beginning with an asterisk.</p>
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+<p>By convention, the first paragraph is a summary description, and the following text is a detailed description. IntelliJ can use this summary to provide a popup with more information.</p>
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+<p>Block tags start on a new line with the <code>@</code> character. Here's an example for the <code>Person</code> class:</p>
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+<pre><code>
+/**
+ * This is a simple class representing information
+ * about a person.
+ *
+ * @property name the name of this person.
+ * @property age the age of this person.
+ * @constructor Creates a new person.
+ *
+ * @author John Hunt
+ * @since 1.0
+ */
+class Person(val name: String = "", var age: Int = 0) {
+    override fun toString() = "Person($name, $age)"
+}
+</code></pre>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<h3>Using KDoc</h3>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<p>The KDoc provides a clear and structured way to document the <code>Person</code> class and its properties. When you hover over the class or its properties in IntelliJ IDEA, you will see a summary of the documentation.</p>
 
-## Why This Repository?
+<h3>Example of KDoc in Action</h3>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<pre><code>
+fun main() {
+    val person = Person("John Doe", 30)
+    println(person)
+}
+</code></pre>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<h3>Summary</h3>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<p>KDoc is a powerful tool for documenting your Kotlin code, providing clear and structured information about classes, properties, and functions. This helps improve code readability and maintainability.</p>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<h2>How to Run</h2>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output.</li>
+</ol>
 
-## Getting Started
+<h2>Expected Output</h2>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<pre>
+<code>
+Person(John Doe, 30)
+</code>
+</pre>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<h2>License</h2>
 
-## License
+<p>This project is licensed under the MIT License.</p>
 
-This project is licensed under the MIT License.
+<h2>Author</h2>
 
-## Author
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
