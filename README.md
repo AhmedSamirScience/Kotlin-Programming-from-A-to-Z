@@ -1,73 +1,148 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Callable References Demonstration</h1>
 
-## Introduction
+<p>This repository contains a simple Kotlin application that demonstrates the concept of callable references. Callable references allow you to reference a member function at one point in your program and invoke it at another, using the box operator (::).</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * Referencing Member Functions
+ * You can create a callable reference to a member function using the box operator (::).
+ * This allows you to reference a member function at one point in your program and invoke it at another.
+ * The callable reference can be for a class (e.g., String) or a specific instance (e.g., the string "42").
+ *
+ * Here’s an example of a callable reference to the toInt() member function of the String class:
+ * // A callable reference to a method on class String
+ * val func3: (String) -> Int = String::toInt
+ *
+ * You can use this by calling func3() and passing in a string:
+ * println("func3('3'): ${func3("3")}")
+ *
+ * For a specific string, you can use a bound callable reference:
+ * // A bound callable reference
+ * val func4: () -> Int = "4"::toInt
+ *
+ * Invoke this by calling the function without any parameters:
+ * println("func4(): ${func4()}")
+ *
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+fun main() {
+    // A callable reference to a method on class String
+    val func3: (String) -> Int = String::toInt
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    // Using func3 by calling it and passing in a string
+    println("func3('3'): ${func3("3")}")
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    // A bound callable reference
+    val func4: () -> Int = "4"::toInt
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    // Invoking func4 by calling the function without any parameters
+    println("func4(): ${func4()}")
+}
+</code>
+</pre>
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+<h3>Referencing Member Functions</h3>
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+<p>You can create a callable reference to a member function using the box operator (::). This allows you to reference a member function at one point in your program and invoke it at another. The callable reference can be for a class (e.g., String) or a specific instance (e.g., the string "42").</p>
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+<h3>Example: Callable Reference to Class Member Function</h3>
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+<p>Here’s an example of a callable reference to the <code>toInt()</code> member function of the <code>String</code> class:</p>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<pre><code>
+// A callable reference to a method on class String
+val func3: (String) -> Int = String::toInt
+</code></pre>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<p>You can use this by calling <code>func3()</code> and passing in a string:</p>
 
-## Why This Repository?
+<pre><code>
+println("func3('3'): ${func3("3")}")
+</code></pre>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h3>Example: Callable Reference to Instance Member Function</h3>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<p>For a specific string, you can use a bound callable reference:</p>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<pre><code>
+// A bound callable reference
+val func4: () -> Int = "4"::toInt
+</code></pre>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<p>Invoke this by calling the function without any parameters:</p>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<pre><code>
+println("func4(): ${func4()}")
+</code></pre>
 
-## Getting Started
+<h3>Using the Callable References</h3>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<p>When an instance of the <code>main</code> function is created, the callable references <code>func3</code> and <code>func4</code> can be used as follows:</p>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<pre><code>
+fun main() {
+    // A callable reference to a method on class String
+    val func3: (String) -> Int = String::toInt
 
-## License
+    // Using func3 by calling it and passing in a string
+    println("func3('3'): ${func3("3")}")
 
-This project is licensed under the MIT License.
+    // A bound callable reference
+    val func4: () -> Int = "4"::toInt
 
-## Author
+    // Invoking func4 by calling the function without any parameters
+    println("func4(): ${func4()}")
+}
+</code></pre>
 
-**Ahmed Samir** - Software Engineer
+<h3>Output</h3>
+
+<pre>
+<code>
+func3('3'): 3
+func4(): 4
+</code>
+</pre>
+
+<h3>Summary</h3>
+
+<p>Callable references in Kotlin provide a way to reference and invoke member functions flexibly. They allow you to create a reference to a member function and invoke it later, improving the modularity and readability of your code.</p>
+
+<h2>How to Run</h2>
+
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of the callable references example.</li>
+</ol>
+
+<h2>Expected Output</h2>
+
+<pre>
+<code>
+func3('3'): 3
+func4(): 4
+</code>
+</pre>
+
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License.</p>
+
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
+```
+
+You can copy and paste this HTML into your README file on GitHub.
