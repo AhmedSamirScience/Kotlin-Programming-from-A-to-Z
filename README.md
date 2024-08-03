@@ -1,73 +1,167 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Equality Demonstration</h1>
 
-## Introduction
+<p>This repository contains a simple Kotlin application that demonstrates the concept of equality between instances. In Kotlin, equality between instances is represented by the operators <code>==</code> and <code>===</code> (and their not versions <code>!=</code> and <code>!==</code>). They have different meanings:</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * Equality Between Instances
+ * In Kotlin, equality between instances is represented by the operators == and === (and their not versions != and !==).
+ * They have different meanings:
+ *
+ * == represents structural or value equality. For example, two instances of the type Person are considered equal if their data is the same (e.g., "John" aged 32 is equal to another "John" aged 32).
+ * != is the inverse of ==.
+ * === represents referential equality, meaning the instances are literally the same (i.e., the same object in memory).
+ * !== is the inverse of ===.
+ * Here's an example using the Person class that overrides the equals() function:
+ */
+class Person(val name: String, val age: Int) {
+    override fun equals(other: Any?): Boolean {
+        return when (other) {
+            null -> false
+            is Person -> (other.name == name) && (other.age == age)
+            else -> false
+        }
+    }
+}
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+fun main() {
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    val p1 = Person("John", 21)
+    val p2 = Person("John", 21)
+    val p3 = p1
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    // checks for reference equality
+    println("p1 === p2: ${p1 === p2}")
+    // checks for structural equality
+    println("p1 == p2: ${p1 == p2}")
+    // again structural equality
+    println("p1.equals(p2): ${p1.equals(p2)}")
+    println("p1 !== p2: ${p1 !== p2}")
+    println("p1 === p3: ${p1 === p3}")
+    println("p1 !== p3: ${p1 !== p3}")
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    /**
+     * Output
+     * p1 === p2: false
+     * p1 == p2: true
+     * p1.equals(p2): true
+     * p1 !== p2: true
+     * p1 === p3: true
+     * p1 !== p3: false
+     *
+     */
+}
+</code>
+</pre>
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+<h3>Equality Between Instances</h3>
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+<p>In Kotlin, equality between instances is represented by the operators <code>==</code> and <code>===</code> (and their not versions <code>!=</code> and <code>!==</code>). They have different meanings:</p>
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+<ul>
+    <li><code>==</code> represents structural or value equality. For example, two instances of the type Person are considered equal if their data is the same (e.g., "John" aged 32 is equal to another "John" aged 32).</li>
+    <li><code>!=</code> is the inverse of <code>==</code>.</li>
+    <li><code>===</code> represents referential equality, meaning the instances are literally the same (i.e., the same object in memory).</li>
+    <li><code>!==</code> is the inverse of <code>===</code>.</li>
+</ul>
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+<h3>Example Using the Person Class</h3>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<p>Here’s an example using the <code>Person</code> class that overrides the <code>equals()</code> function:</p>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<pre><code>
+class Person(val name: String, val age: Int) {
+    override fun equals(other: Any?): Boolean {
+        return when (other) {
+            null -> false
+            is Person -> (other.name == name) && (other.age == age)
+            else -> false
+        }
+    }
+}
 
-## Why This Repository?
+fun main() {
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+    val p1 = Person("John", 21)
+    val p2 = Person("John", 21)
+    val p3 = p1
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+    // checks for reference equality
+    println("p1 === p2: ${p1 === p2}")
+    // checks for structural equality
+    println("p1 == p2: ${p1 == p2}")
+    // again structural equality
+    println("p1.equals(p2): ${p1.equals(p2)}")
+    println("p1 !== p2: ${p1 !== p2}")
+    println("p1 === p3: ${p1 === p3}")
+    println("p1 !== p3: ${p1 !== p3}")
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+    /**
+     * Output
+     * p1 === p2: false
+     * p1 == p2: true
+     * p1.equals(p2): true
+     * p1 !== p2: true
+     * p1 === p3: true
+     * p1 !== p3: false
+     *
+     */
+}
+</code></pre>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<h3>Output</h3>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<pre>
+<code>
+p1 === p2: false
+p1 == p2: true
+p1.equals(p2): true
+p1 !== p2: true
+p1 === p3: true
+p1 !== p3: false
+</code>
+</pre>
 
-## Getting Started
+<h3>Summary</h3>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<p>Kotlin provides operators to check both structural and referential equality between instances. Structural equality checks if the data inside the instances are the same, while referential equality checks if the instances are the exact same object in memory. This allows for more flexible and accurate comparisons in your Kotlin programs.</p>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<h2>How to Run</h2>
 
-## License
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of the equality example.</li>
+</ol>
 
-This project is licensed under the MIT License.
+<h2>Expected Output</h2>
 
-## Author
+<pre>
+<code>
+p1 === p2: false
+p1 == p2: true
+p1.equals(p2): true
+p1 !== p2: true
+p1 === p3: true
+p1 !== p3: false
+</code>
+</pre>
 
-**Ahmed Samir** - Software Engineer
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License.</p>
+
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
