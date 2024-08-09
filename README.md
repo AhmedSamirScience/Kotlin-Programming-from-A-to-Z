@@ -64,7 +64,7 @@ This code is usually built into the programming language and works in the backgr
 ### 4. Execution
 During runtime, the program and the runtime environment send instructions to the computer's processor. These instructions are converted into machine code that the hardware can understand and execute.
 
-<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-Summary/blob/ch1-part2/programming_lifecycle.png" height="470" width="690" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-Two/programming_lifecycle.png" height="470" width="690" ></p>
 
 ***
 # Runtime Errors
@@ -86,7 +86,7 @@ Runtime errors occur when a program encounters an issue during execution that pr
 
 Understanding runtime errors is crucial for developers as they diagnose and resolve issues in software applications. Proper error handling, testing, and monitoring practices are essential to mitigate the impact of runtime errors on application stability and user experience.
 
-<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-Summary/blob/ch1-part2/where_the_runtime_system_fits_in.png" height="470" width="360" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-Two/where_the_runtime_system_fits_in.png" height="470" width="360" ></p>
 
 **Please Note:** A runtime environment typically shows notifications that explain why a crash occurred or where in the program an error happened. To fix these issues, programmers often need to debug the software. This can involve manual inspection or using debugging tools to find the source of the runtime error.
 
