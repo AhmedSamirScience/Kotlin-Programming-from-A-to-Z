@@ -1,73 +1,122 @@
-# Kotlin Programming from A to Z
+<h1>Kotlin Private Properties Demonstration</h1>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<p>This repository contains a simple Kotlin application that demonstrates how to use private properties in a class. In Kotlin, you can define a constructor property as private, meaning it is accessible only within the class and not from outside the class.</p>
 
-## Introduction
+<h2>Code Overview</h2>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<pre>
+<code>
+/**
+ * Private Properties
+ * In Kotlin, you can define a constructor property as private. This property:
+ *
+ * Requires a value when an instance is created.
+ * Is accessible within the class itself.
+ * Is not accessible from outside the class.
+ * Here’s an example using the Person3 class:
+ */
+class Person3(private val id: String,
+              val name: String = "",
+              val age: Int = 0) {
+}
 
-## What You Will Learn
+/**
+ * In this example:
+ *
+ * The id property is private, so it must be provided when creating an instance, but it can't be accessed from outside the class.
+ * The name and age properties are public and read-only (val), and they are optional parameters with default values.
+ * When creating an instance of Person3, you must provide an id, but you can choose whether to provide values for name and age.
+ * Here’s a simple application demonstrating this:
+ */
+fun main() {
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+    val p1 = Person3("id1", "John", 50)
+    println("${p1.name} is ${p1.age}")
+    // compile-time error: id is a private property
+    // println("${p1.id}")
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    /**
+     * Output:
+     * John is 50
+     */
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+}
+</code>
+</pre>
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+<h3>Using Private Properties</h3>
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+<p>In Kotlin, you can define a constructor property as private. This property:</p>
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+<ul>
+    <li>Requires a value when an instance is created.</li>
+    <li>Is accessible within the class itself.</li>
+    <li>Is not accessible from outside the class.</li>
+</ul>
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+<h3>Example: Person3 Class</h3>
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+<p>Here’s an example using the <code>Person3</code> class:</p>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<pre><code>
+class Person3(private val id: String,
+              val name: String = "",
+              val age: Int = 0) {
+}
+</code></pre>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<p>In this example:</p>
 
-## Why This Repository?
+<ul>
+    <li>The <code>id</code> property is private, so it must be provided when creating an instance, but it can't be accessed from outside the class.</li>
+    <li>The <code>name</code> and <code>age</code> properties are public and read-only (<code>val</code>), and they are optional parameters with default values.</li>
+</ul>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h3>Creating and Using Instances</h3>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<p>When creating an instance of <code>Person3</code>, you must provide an <code>id</code>, but you can choose whether to provide values for <code>name</code> and <code>age</code>:</p>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<pre><code>
+fun main() {
+    val p1 = Person3("id1", "John", 50)
+    println("${p1.name} is ${p1.age}")
+    // compile-time error: id is a private property
+    // println("${p1.id}")
+}
+</code></pre>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<h3>Expected Output</h3>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<pre>
+<code>
+John is 50
+</code>
+</pre>
 
-## Getting Started
+<p>Note: Attempting to access the <code>id</code> property outside the class will result in a compile-time error because it is private.</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<h3>Summary</h3>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<p>Private properties in Kotlin are useful when you want certain class properties to be inaccessible from outside the class. This helps to encapsulate the class's internal state and ensures that only the class's methods can interact with these properties.</p>
 
-## License
+<h2>How to Run</h2>
 
-This project is licensed under the MIT License.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output.</li>
+</ol>
 
-## Author
+<h2>License</h2>
 
-**Ahmed Samir** - Software Engineer
+<p>This project is licensed under the MIT License.</p>
+
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
