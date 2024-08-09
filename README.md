@@ -99,4 +99,30 @@ class Person constructor(val name: String, var age: Int) { }
 
 <h3>Example Code Execution</h3>
 
-<p>In the provided example, there is no specific code execution. The
+<p>In the provided example, there is no specific code execution. The main function is empty. However, the key points about the class definition have been demonstrated.</p>
+
+<h3>Summary</h3>
+
+<p>Kotlin provides a straightforward way to define classes with properties, constructors, and optional initialization blocks. The flexibility in the class structure allows for clear and concise code, with naming conventions that help organize code in large projects.</p>
+
+<h2>How to Run</h2>
+
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the class definition in action (if any additional code is added).</li>
+</ol>
+
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License.</p>
+
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
