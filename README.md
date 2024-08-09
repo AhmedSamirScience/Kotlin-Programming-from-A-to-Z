@@ -25,7 +25,7 @@ Here is you can find kotlin repository releases [link](https://github.com/JetBra
 Here is you can find kotlin repository release of v2.0.0 as (latest as the time of writing) [link](https://github.com/JetBrains/kotlin/releases/tag/v2.0.0).
 
 ## Kotlin Programming (Programming Paradigms)
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_0.png" height="410" width="790" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_0.png" height="410" width="790" ></p>
 
 For more information on Programming Paradigms, you can watch this [YouTube video](https://www.youtube.com/watch?v=FGufrjzbiZw).
 
@@ -35,7 +35,7 @@ For more information on Programming Paradigms, you can see this [geeks for geeks
   Procedural programming breaks down a program into step-by-step instructions for the computer. It uses procedures/functions to organize tasks, and control structures like if statements and loops to manage execution. Examples are C and Pascal. you can see the figure   
   below for more understand.
 
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_1.png" height="610" width="690" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_1.png" height="610" width="690" ></p>
 
 For more information on Procedural Programming, you can watch this [YouTube video](https://www.youtube.com/watch?v=N50KLVo0RV0).
 
@@ -44,7 +44,7 @@ You can also see this [Kotlin blog on procedural programming](https://learning.o
 ### Database Processing Approache (Declarative Programming Paradigm)
 It enable developers to specify the solution to a problem without detailing the implementation steps. The language or environment then decides how to execute the solution. SQL, used for database queries, is a prominent example of such a declarative language.
 
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_2.png" height="610" width="610" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_2.png" height="610" width="610" ></p>
 
 ### Object Oriented Programming (Imperative Programming Paradigm)
 Object-Oriented Programming (OOP) organizes systems around objects, each containing its own data (state) and behavior. Java and C# are prime examples of this approach.
@@ -54,11 +54,11 @@ Functional Programming languages break down problems into functions. Each functi
 
 For more information on Procedural Programming, you can watch this [YouTube video](https://www.youtube.com/watch?v=csPP-u1n1Nw).
 
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_3.png" height="590" width="690" ></p>
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_4.png" height="470" width="690" ></p>
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_5.png" height="510" width="690" ></p>
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_6.png" height="610" width="690" ></p>
-<p href="url"  align="center" ><img src="https://raw.githubusercontent.com/AhmedSamirScience/Kotlin-Programming-Summary/ch1/figure_7.png" height="610" width="690" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_3.png" height="590" width="690" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_4.png" height="470" width="690" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_5.png" height="510" width="690" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_6.png" height="610" width="690" ></p>
+<p href="url"  align="center" ><img src="https://github.com/AhmedSamirScience/Kotlin-Programming-from-A-to-Z/blob/ch1-Introduction/Part-One/figure_7.png" height="610" width="690" ></p>
 
 Kotlin supports functional programming through features like higher-order functions, immutability, and lambda expressions. This enables developers to write concise and expressive code that focuses on operations on data rather than managing mutable state, making it suitable for functional programming paradigms.
 
