@@ -1,73 +1,201 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Companion Objects Demonstration</h1>
 
-## Introduction
+<p>This repository contains a Kotlin application that demonstrates the concept of companion objects in Kotlin. Companion objects are singleton objects associated with a class. They can be used to provide utility functions, such as factory methods, that support the class's behavior. They are similar to static content in Java or C# classes.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * This file demonstrates the concept of companion objects in Kotlin.
+ *
+ * Companion objects are singleton objects for a class. They can be used to provide utility functions,
+ * such as factory methods, that support the concept modeled by the class. They are similar to static
+ * content in Java or C# classes.
+ *
+ * A companion object:
+ * - Is defined within the body of the class.
+ * - Is marked as a companion object.
+ * - Does not have a name.
+ *
+ * Companion objects are useful for housekeeping behavior, factory operations, shared data across all
+ * instances of a class, etc. From the user's perspective, the companion object and the class appear
+ * as a single concept.
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+class UserSession private constructor(val id: Int) {
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    // Companion (singleton) object
+    companion object {
+        private val MAX = 100
+        private var count = 0
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+        // Increment count
+        private fun next() = count++
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+        // Factory method to create a new UserSession
+        fun create(): UserSession {
+            return UserSession(count).also { next() }
+        }
+    }
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+    // Member function to print session data
+    fun printData() {
+        println("Id is $id and MAX is $MAX")
+    }
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    // Override toString method
+    override fun toString(): String {
+        return "UserSession($id)"
+    }
+}
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+/**
+ * The main function demonstrates the creation and use of UserSession instances
+ * using the companion object's factory method.
+ */
+fun main() {
+    // Create UserSession instances using the companion object's factory method
+    val session1 = UserSession.create()
+    println(session1)
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+    val session2 = UserSession.create()
+    println(session2)
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+    // Print data of the first session
+    session1.printData()
+}
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+/*
+ * Output:
+ * UserSession(0)
+ * UserSession(1)
+ * Id is 0 and MAX is 100
+ */
 
-## Why This Repository?
+/**
+ * Explanation:
+ *
+ * - The `UserSession` class has a private constructor, so it cannot be instantiated directly from outside the class.
+ * - The companion object within `UserSession` provides a `create()` factory method to create new instances.
+ * - The `next()` function increments the `count` variable, ensuring each session has a unique ID.
+ * - The `printData()` method displays the session ID and the `MAX` value.
+ * - The companion object acts as a singleton, controlling the creation of `UserSession` instances.
+ */
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+/**
+ * Summary:
+ * Companion Object: The companion object is a singleton object tied to the UserSession class. It provides utility functions like the create() factory method that controls how instances of UserSession are created.
+ *
+ * Private Constructor: The constructor of UserSession is private, so instances cannot be created directly from outside the class. Instead, they must be created using the create() method provided by the companion object.
+ *
+ * Output: The main function demonstrates how to create and use UserSession instances. The unique session IDs are generated by the companion object's create() method, and session data is printed using the printData() method.
+ *
+ * This class.kt file gives a complete and structured example of how to use companion objects in Kotlin, along with detailed comments and explanations.
+ */
+</code>
+</pre>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<h3>Companion Objects in Kotlin</h3>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<p>In Kotlin, a companion object is a singleton object associated with a class. It provides a way to define utility functions, factory methods, or shared data that can be accessed without creating an instance of the class. Companion objects are similar to static members in Java or C#.</p>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h3>Example: UserSession Class with Companion Object</h3>
 
-## Getting Started
+<p>The following example demonstrates how to use a companion object within a class:</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<pre><code>
+class UserSession private constructor(val id: Int) {
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+    // Companion (singleton) object
+    companion object {
+        private val MAX = 100
+        private var count = 0
 
-## License
+        // Increment count
+        private fun next() = count++
 
-This project is licensed under the MIT License.
+        // Factory method to create a new UserSession
+        fun create(): UserSession {
+            return UserSession(count).also { next() }
+        }
+    }
 
-## Author
+    // Member function to print session data
+    fun printData() {
+        println("Id is $id and MAX is $MAX")
+    }
 
-**Ahmed Samir** - Software Engineer
+    // Override toString method
+    override fun toString(): String {
+        return "UserSession($id)"
+    }
+}
+</code></pre>
+
+<p>The <code>UserSession</code> class uses a companion object to manage the creation of its instances. The companion object contains a private variable <code>count</code> to track the number of sessions created and provides a factory method <code>create()</code> to instantiate new sessions.</p>
+
+<h3>Using the Companion Object</h3>
+
+<p>The <code>main</code> function demonstrates how to use the companion object's factory method to create and manage <code>UserSession</code> instances:</p>
+
+<pre><code>
+fun main() {
+    // Create UserSession instances using the companion object's factory method
+    val session1 = UserSession.create()
+    println(session1)
+
+    val session2 = UserSession.create()
+    println(session2)
+
+    // Print data of the first session
+    session1.printData()
+}
+</code></pre>
+
+<h3>Output</h3>
+
+<pre>
+<code>
+UserSession(0)
+UserSession(1)
+Id is 0 and MAX is 100
+</code>
+</pre>
+
+<h3>Explanation</h3>
+
+<ul>
+    <li><strong>Companion Object:</strong> The companion object is a singleton associated with the <code>UserSession</code> class. It provides utility functions like the <code>create()</code> factory method to manage the creation of <code>UserSession</code> instances.</li>
+    <li><strong>Private Constructor:</strong> The constructor of <code>UserSession</code> is private, so instances cannot be created directly from outside the class. Instead, they must be created using the <code>create()</code> method provided by the companion object.</li>
+    <li><strong>Output:</strong> The main function demonstrates how to create and use <code>UserSession</code> instances. The unique session IDs are generated by the companion object's <code>create()</code> method, and session data is printed using the <code>printData()</code> method.</li>
+</ul>
+
+<h3>Summary</h3>
+
+<p>Companion objects in Kotlin are a powerful tool for creating utility functions, managing shared data, and providing factory methods. By using a companion object, you can control how instances of a class are created and provide additional functionality that is associated with the class as a whole.</p>
+
+<h2>How to Run</h2>
+
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output.</li>
+</ol>
+
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License.</p>
+
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
