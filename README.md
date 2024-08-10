@@ -1,73 +1,243 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Singleton Objects Demonstration</h1>
 
-## Introduction
+<p>This repository contains a Kotlin application that demonstrates the concept of singleton objects using the <code>object</code> keyword. Singleton objects in Kotlin allow you to create a single instance of a class with global access. They are particularly useful for utility classes and managing shared state.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * This file demonstrates the concept of singleton objects in Kotlin using the `object` keyword.
+ *
+ * A singleton object can have:
+ * - One or more `init` blocks.
+ * - Zero or more member functions.
+ * - Zero or more member properties.
+ * - Its own override of `toString()`.
+ *
+ * Note: A singleton object cannot have a constructor.
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+object MathsUtils {
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    // Public member properties
+    val ZERO: Int = 0
+    val MIN: Int = -100
+    val MAX: Int
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    // Initialization block
+    init {
+        MAX = 1000
+    }
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    // Member functions
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+    fun subtract(a: Int, b: Int): Int {
+        return a - b
+    }
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    fun isLessThanMax(value: Int): Boolean {
+        return value < MAX
+    }
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+    // Override toString
+    override fun toString(): String {
+        return "MathsUtils(ZERO=$ZERO, MIN=$MIN, MAX=$MAX)"
+    }
+}
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+object Session {
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+    // Public member property
+    val id: String = "session-12345"
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+    // Override toString
+    override fun toString(): String {
+        return "Session(id=$id)"
+    }
+}
 
-## Why This Repository?
+fun main() {
+    // Accessing the singleton's properties and functions in MathsUtils
+    println("MathsUtils.ZERO: ${MathsUtils.ZERO}")
+    println("MathsUtils.MIN: ${MathsUtils.MIN}")
+    println("MathsUtils.MAX: ${MathsUtils.MAX}")
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+    println("Add 10 + 20: ${MathsUtils.add(10, 20)}")
+    println("Subtract 30 - 15: ${MathsUtils.subtract(30, 15)}")
+    println("Is 500 less than MAX: ${MathsUtils.isLessThanMax(500)}")
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+    // Output the toString() of MathsUtils
+    println(MathsUtils)
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+    // Demonstrating the use of the Session singleton
+    println(Session)
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+    // Assign the Session object to a val
+    val s: Session = Session
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+    // Print the alias
+    println(s)
+}
 
-## Getting Started
+/*
+ * Output:
+ * MathsUtils.ZERO: 0
+ * MathsUtils.MIN: -100
+ * MathsUtils.MAX: 1000
+ * Add 10 + 20: 30
+ * Subtract 30 - 15: 15
+ * Is 500 less than MAX: true
+ * MathsUtils(ZERO=0, MIN=-100, MAX=1000)
+ * Session(id=session-12345)
+ * Session(id=session-12345)
+ */
+</code>
+</pre>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<h3>Singleton Objects in Kotlin</h3>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<p>In Kotlin, the <code>object</code> keyword is used to create a singleton object. A singleton object can have:</p>
 
-## License
+<ul>
+    <li>One or more <code>init</code> blocks.</li>
+    <li>Zero or more member functions.</li>
+    <li>Zero or more member properties.</li>
+    <li>Its own override of <code>toString()</code>.</li>
+</ul>
 
-This project is licensed under the MIT License.
+<p>Note: A singleton object cannot have a constructor.</p>
 
-## Author
+<h3>Example: MathsUtils Singleton</h3>
 
-**Ahmed Samir** - Software Engineer
+<p>The <code>MathsUtils</code> object is a singleton that provides some mathematical utilities:</p>
+
+<pre><code>
+object MathsUtils {
+
+    // Public member properties
+    val ZERO: Int = 0
+    val MIN: Int = -100
+    val MAX: Int
+
+    // Initialization block
+    init {
+        MAX = 1000
+    }
+
+    // Member functions
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
+
+    fun subtract(a: Int, b: Int): Int {
+        return a - b
+    }
+
+    fun isLessThanMax(value: Int): Boolean {
+        return value < MAX
+    }
+
+    // Override toString
+    override fun toString(): String {
+        return "MathsUtils(ZERO=$ZERO, MIN=$MIN, MAX=$MAX)"
+    }
+}
+</code></pre>
+
+<p>The <code>MathsUtils</code> object has public properties <code>ZERO</code>, <code>MIN</code>, and <code>MAX</code>, an <code>init</code> block to initialize <code>MAX</code>, and several utility functions. It also overrides <code>toString()</code> to provide a custom string representation.</p>
+
+<h3>Example: Session Singleton</h3>
+
+<p>The <code>Session</code> object is a simple singleton representing a session:</p>
+
+<pre><code>
+object Session {
+
+    // Public member property
+    val id: String = "session-12345"
+
+    // Override toString
+    override fun toString(): String {
+        return "Session(id=$id)"
+    }
+}
+</code></pre>
+
+<p>The <code>Session</code> object has a single property <code>id</code> and overrides <code>toString()</code> to provide a custom string representation.</p>
+
+<h3>Using Singleton Objects</h3>
+
+<p>In the <code>main</code> function, we demonstrate how to access the properties and functions of the <code>MathsUtils</code> and <code>Session</code> singletons:</p>
+
+<pre><code>
+fun main() {
+    // Accessing the singleton's properties and functions in MathsUtils
+    println("MathsUtils.ZERO: ${MathsUtils.ZERO}")
+    println("MathsUtils.MIN: ${MathsUtils.MIN}")
+    println("MathsUtils.MAX: ${MathsUtils.MAX}")
+
+    println("Add 10 + 20: ${MathsUtils.add(10, 20)}")
+    println("Subtract 30 - 15: ${MathsUtils.subtract(30, 15)}")
+    println("Is 500 less than MAX: ${MathsUtils.isLessThanMax(500)}")
+
+    // Output the toString() of MathsUtils
+    println(MathsUtils)
+
+    // Demonstrating the use of the Session singleton
+    println(Session)
+
+    // Assign the Session object to a val
+    val s: Session = Session
+
+    // Print the alias
+    println(s)
+}
+</code></pre>
+
+<h3>Expected Output</h3>
+
+<pre>
+<code>
+MathsUtils.ZERO: 0
+MathsUtils.MIN: -100
+MathsUtils.MAX: 1000
+Add 10 + 20: 30
+Subtract 30 - 15: 15
+Is 500 less than MAX: true
+MathsUtils(ZERO=0, MIN=-100, MAX=1000)
+Session(id=session-12345)
+Session(id=session-12345)
+</code>
+</pre>
+
+<h3>Summary</h3>
+
+<p>Singleton objects in Kotlin are powerful tools for managing global state or providing utility functions without needing to instantiate a class. The <code>object</code> keyword makes it easy to define these singletons, complete with properties, functions, and initialization blocks.</p>
+
+<h2>How to Run</h2>
+
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output.</li>
+</ol>
+
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License.</p>
+
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
