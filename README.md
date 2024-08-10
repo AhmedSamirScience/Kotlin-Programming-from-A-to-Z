@@ -1,73 +1,110 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Top-Level Properties Demonstration</h1>
 
-## Introduction
+<p>This repository contains a Kotlin application that demonstrates the use of top-level properties. Top-level properties are declared outside of any class, object, or function, making them accessible throughout the same file.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * This file demonstrates the use of top-level properties in Kotlin.
+ *
+ * Top-level properties are properties that are declared outside of any class, object, or function.
+ * These properties can be accessed directly anywhere within the same file.
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+// Top-level properties
+val MIN = 1
+val MAX = 100
+val calculator = Calculator()
+var count = 0
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+class Calculator {
+    // A simple class with basic functionality
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    override fun toString(): String {
+        return "Calculator Instance"
+    }
+}
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+fun main() {
+    // Accessing top-level properties
+    println("MIN: $MIN")
+    println("MAX: $MAX")
+    println("Initial count: $count")
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+    // Modifying the top-level variable 'count'
+    count++
+    println("Updated count: $count")
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    // Using the top-level 'calculator' property
+    println("Calculator instance: $calculator")
+    println("Adding 10 + 20 using calculator: ${calculator.add(10, 20)}")
+}
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+/*
+ * Output:
+ * MIN: 1
+ * MAX: 100
+ * Initial count: 0
+ * Updated count: 1
+ * Calculator instance: Calculator Instance
+ * Adding 10 + 20 using calculator: 30
+ */
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+/**
+ * Explanation:
+ *
+ * - `MIN`, `MAX`, `calculator`, and `count` are top-level properties in this file.
+ * - `MIN` and `MAX` are immutable values (declared with `val`), meaning they cannot be changed after initialization.
+ * - `count` is a mutable variable (declared with `var`), so its value can be modified.
+ * - The `calculator` property is an instance of the `Calculator` class.
+ * - The `main` function demonstrates how these top-level properties can be accessed and used directly within the same file.
+ */
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+/**
+ * Summary:
+ * Top-Level Properties: MIN, MAX, calculator, and count are defined at the top level of the file, making them accessible throughout the file.
+ * Immutability and Mutability: MIN and MAX are immutable (val), while count is mutable (var), allowing it to be modified.
+ * Calculator Class: The Calculator class provides basic functionality, and an instance of this class is used as a top-level property.
+ * Access: The main function shows how to access and use these top-level properties within the file.
+ */
+</code>
+</pre>
 
-## Why This Repository?
+<h3>Top-Level Properties in Kotlin</h3>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<ul>
+    <li><strong>Top-Level Properties:</strong> <code>MIN</code>, <code>MAX</code>, <code>calculator</code>, and <code>count</code> are defined at the top level of the file, making them accessible throughout the file.</li>
+    <li><strong>Immutability and Mutability:</strong> <code>MIN</code> and <code>MAX</code> are immutable (declared with <code>val</code>), while <code>count</code> is mutable (declared with <code>var</code>), allowing it to be modified.</li>
+    <li><strong>Calculator Class:</strong> The <code>Calculator</code> class provides basic functionality, and an instance of this class is used as a top-level property.</li>
+    <li><strong>Access:</strong> The <code>main</code> function shows how to access and use these top-level properties within the file.</li>
+</ul>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<h2>How to Run</h2>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of different examples demonstrating the use of top-level properties.</li>
+</ol>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<h2>License</h2>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<p>This project is licensed under the MIT License.</p>
 
-## Getting Started
+<h2>Author</h2>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
-
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
