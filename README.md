@@ -1,73 +1,172 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Companion Objects Demonstration</h1>
 
-## Introduction
+<p>This repository contains a Kotlin application that demonstrates the appropriate use of companion objects. Companion objects are used to define behavior that is shared across all instances of a class. They are best suited for utility functions, instance management, answering class-related queries, providing examples, testing, and supporting application entry points.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+object HelloWorldApp {
+    /**
+     * Entry point for a Kotlin application.
+     * The @JvmStatic annotation ensures that the compiler generates bytecode compatible with Java's static member function.
+     */
+    @JvmStatic
+    fun main(args: Array<String>) {
+        println("Hello World!")
+    }
+}
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+class MyClass private constructor() {
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    companion object {
+        private var instanceCount = 0
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+        /**
+         * Provides the number of MyClass instances that have been created.
+         */
+        fun getInstanceCount(): Int {
+            return instanceCount
+        }
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+        /**
+         * Factory method to create a new MyClass instance.
+         */
+        fun create(): MyClass {
+            instanceCount++
+            return MyClass()
+        }
+    }
+}
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+class DatabaseConnection private constructor() {
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    companion object {
+        private const val MAX_CONNECTIONS = 10
+        private var connectionsCreated = 0
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+        /**
+         * Factory method to create a new DatabaseConnection instance, limiting the number of connections.
+         */
+        fun create(): DatabaseConnection? {
+            return if (connectionsCreated < MAX_CONNECTIONS) {
+                connectionsCreated++
+                DatabaseConnection()
+            } else {
+                null // Or throw an exception if desired
+            }
+        }
+    }
+}
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+class ExampleClass {
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+    companion object {
+        /**
+         * Provides an example usage of ExampleClass.
+         */
+        fun exampleUsage() {
+            val instance = ExampleClass()
+            println("This is how you create an instance: $instance")
+        }
+    }
+}
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+class Calculator {
 
-## Why This Repository?
+    companion object {
+        /**
+         * Tests the add function of the Calculator class.
+         */
+        fun testAddition(): Boolean {
+            val calc = Calculator()
+            return calc.add(2, 3) == 5
+        }
+    }
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+    /**
+     * Adds two integers and returns the result.
+     */
+    fun add(a: Int, b: Int): Int {
+        return a + b
+    }
+}
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+fun main() {
+    // Demonstrating the use of HelloWorldApp as the entry point
+    HelloWorldApp.main(arrayOf())
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+    // Demonstrating instance management with MyClass
+    val instance1 = MyClass.create()
+    val instance2 = MyClass.create()
+    println("MyClass instances created: ${MyClass.getInstanceCount()}")
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+    // Demonstrating limited instance creation with DatabaseConnection
+    val connection1 = DatabaseConnection.create()
+    val connection2 = DatabaseConnection.create()
+    println("DatabaseConnection 1: $connection1")
+    println("DatabaseConnection 2: $connection2")
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+    // Demonstrating example usage of ExampleClass
+    ExampleClass.exampleUsage()
 
-## Getting Started
+    // Demonstrating a simple test with Calculator
+    val isAdditionCorrect = Calculator.testAddition()
+    println("Is the Calculator addition correct? $isAdditionCorrect")
+}
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+/*
+ * Output:
+ * Hello World!
+ * MyClass instances created: 2
+ * DatabaseConnection 1: DatabaseConnection@1b6d3586
+ * DatabaseConnection 2: DatabaseConnection@4554617c
+ * This is how you create an instance: ExampleClass@74a14482
+ * Is the Calculator addition correct? true
+ */
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+/**
+ * Explanation:
+ *
+ * - `HelloWorldApp` serves as an application entry point using a companion object.
+ * - `MyClass` uses a companion object to count and manage instances of the class.
+ * - `DatabaseConnection` uses a companion object to limit the number of instances created.
+ * - `ExampleClass` provides a usage example through a companion object method.
+ * - `Calculator` uses a companion object for a simple test of its functionality.
+ */
+</code>
+</pre>
 
-## License
+<h3>Companion Objects in Kotlin</h3>
 
-This project is licensed under the MIT License.
+<ul>
+    <li><strong>HelloWorldApp:</strong> Serves as an application entry point using a companion object.</li>
+    <li><strong>MyClass:</strong> Uses a companion object to count and manage instances of the class.</li>
+    <li><strong>DatabaseConnection:</strong> Uses a companion object to limit the number of instances created.</li>
+    <li><strong>ExampleClass:</strong> Provides a usage example through a companion object method.</li>
+    <li><strong>Calculator:</strong> Uses a companion object for a simple test of its functionality.</li>
+</ul>
 
-## Author
+<h2>How to Run</h2>
 
-**Ahmed Samir** - Software Engineer
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of different examples demonstrating the use of companion objects.</li>
+</ol>
+
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License.</p>
+
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
