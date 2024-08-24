@@ -1,73 +1,127 @@
-# Kotlin Programming from A to Z
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Custom Property Getters and Setters Demonstration</h1>
 
-## Introduction
+<p>This repository contains a Kotlin application that demonstrates the use of custom property getters and setters. In Kotlin, properties can have custom logic for their getters and setters, allowing you to control how property values are accessed and modified. This example showcases how to define custom getters and setters for both read-only (<code>val</code>) and read-write (<code>var</code>) properties.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Code Overview</h2>
 
-## What You Will Learn
+<pre>
+<code>
+/**
+ * This file demonstrates the use of custom property getters and setters in Kotlin.
+ *
+ * Properties in Kotlin can have custom logic for their getters and setters, allowing you to control
+ * how property values are accessed and modified. This example showcases how to define custom
+ * getters and setters for both read-only (`val`) and read-write (`var`) properties.
+ */
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+class GameObject {
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+    // Read-only property with a custom getter
+    val y: Int
+        get() {
+            // Custom logic to calculate the current y location
+            println("Getting y location...")
+            return (0..100).random()  // Just a random example
+        }
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    // Read-only property with a custom getter
+    val x: Int
+        get() {
+            // Custom logic to calculate the current x location
+            println("Getting x location...")
+            return (0..100).random()  // Just a random example
+        }
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    // Read-write property with custom getter and setter
+    var name: String = "Unknown"
+        get() {
+            // Custom logic to get the name
+            println("Getting name...")
+            return field.uppercase()  // Return the name in uppercase
+        }
+        set(value) {
+            // Custom logic to set the name
+            println("Setting name...")
+            field = value.trim()  // Set the name after trimming whitespace
+        }
+}
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+fun main() {
+    val gameObject = GameObject()
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    // Accessing the custom getter for y
+    println("y: ${gameObject.y}")
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+    // Accessing the custom getter for x
+    println("x: ${gameObject.x}")
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+    // Accessing and modifying the custom getter and setter for name
+    println("Initial name: ${gameObject.name}")
+    gameObject.name = "  NewName  "
+    println("Updated name: ${gameObject.name}")
+}
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+/*
+ * Output:
+ * Getting y location...
+ * y: 57
+ * Getting x location...
+ * x: 23
+ * Getting name...
+ * Initial name: UNKNOWN
+ * Setting name...
+ * Getting name...
+ * Updated name: NEWNAME
+ */
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+/**
+ * Explanation:
+ *
+ * - `y` and `x` are read-only properties with custom getters. The getters simulate calculating the current location by generating a random value.
+ * - `name` is a read-write property with custom getter and setter. The getter returns the name in uppercase, while the setter trims any leading or trailing whitespace before storing the value.
+ *
+ * - `field` is a special identifier used in custom setters to refer to the underlying property value.
+ * - Custom getters and setters allow you to control how property values are accessed and modified, providing a powerful tool for encapsulating logic.
+ */
 
-## Why This Repository?
+/**
+ * Summary:
+ *
+ * - **Custom Getters**: Define custom logic for retrieving a property's value using the `get()` function.
+ * - **Custom Setters**: For `var` properties, define custom logic for modifying a property's value using the `set(value)` function.
+ * - **Use Case**: Custom getters and setters provide a way to encapsulate logic, ensuring that any access or modification of properties adheres to the rules and behaviors you define.
+ */
+</code>
+</pre>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h3>Custom Property Getters and Setters in Kotlin</h3>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<ul>
+    <li><strong>Custom Getters:</strong> Define custom logic for retrieving a property's value using the <code>get()</code> function.</li>
+    <li><strong>Custom Setters:</strong> For <code>var</code> properties, define custom logic for modifying a property's value using the <code>set(value)</code> function.</li>
+    <li><strong>Use Case:</strong> Custom getters and setters provide a way to encapsulate logic, ensuring that any access or modification of properties adheres to the rules and behaviors you define.</li>
+</ul>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<h2>How to Run</h2>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output of different examples demonstrating the use of custom property getters and setters.</li>
+</ol>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h2>License</h2>
 
-## Getting Started
+<p>This project is licensed under the MIT License.</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<h2>Author</h2>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
