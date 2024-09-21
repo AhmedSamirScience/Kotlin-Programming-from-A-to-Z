@@ -1,73 +1,111 @@
-# Kotlin Programming from A to Z
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<body>
 
-## Introduction
+<h1>Kotlin Type Checking and Smart Casting Demonstration</h1>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<p>This repository contains a Kotlin application that demonstrates how to check the type of a variable at runtime using the <code>is</code> and <code>!is</code> operators, along with smart casting. Kotlin's smart casting allows the compiler to automatically cast variables to the correct type after a type check, ensuring type safety without requiring manual casting.</p>
 
-## What You Will Learn
+<h2>Key Concepts</h2>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<ul>
+    <li><strong>is Operator:</strong> Used to check if a variable is of a specific type.</li>
+    <li><strong>!is Operator:</strong> Used to check if a variable is not of a specific type.</li>
+    <li><strong>Smart Casting:</strong> When the <code>is</code> check passes, Kotlin smart casts the variable to the checked type within the block, allowing access to its properties and methods.</li>
+</ul>
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+<h2>Code Overview</h2>
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+<pre>
+<code>
+/**
+ * This example demonstrates how to check the type of a variable using `is` and `!is` in Kotlin.
+ * The `when` expression is used to handle different types based on runtime checks.
+ */
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+fun main() {
+    // Initializing a variable of type Any
+    var any: Any = "Hello"
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+    // Using when expression with is and !is to check the type of the variable
+    when (any) {
+        // If the variable is a String
+        is String -> {
+            println("any contains a String")
+            // Smart cast: any is treated as a String within this block
+            println(any.length)
+        }
+        // If the variable is not a String
+        !is String -> {
+            println("any does not contain a String")
+            // Printing the actual type of the variable
+            println(any::class.simpleName)
+        }
+    }
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    // Changing the value of any to a Double
+    any = 43.5
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+    // Re-checking the type with the new value
+    when (any) {
+        is String -> {
+            println("any contains a String")
+            println(any.length)
+        }
+        !is String -> {
+            println("any does not contain a String")
+            println(any::class.simpleName)
+        }
+    }
+}
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+/*
+ * Output (with "Hello" as the initial value):
+ * any contains a String
+ * 5
+ *
+ * Output (with 43.5 as the new value):
+ * any does not contain a String
+ * Double
+ */
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+/**
+ * Explanation:
+ *
+ * - The variable `any` is of type `Any`, which can hold references to any Kotlin object.
+ * - The `when` expression is used to check the type of `any` using the `is` operator.
+ * - When `any` is a `String`, the `is` check passes, and the variable is smart cast to `String`, allowing access to its properties (like `length`).
+ * - When `any` is not a `String`, the `!is` operator catches this, and the program prints the actual type using `any::class.simpleName`.
+ * - When the value of `any` is changed to a `Double`, the `when` expression correctly identifies it as not a `String` and prints the type as `Double`.
+ */
+</code>
+</pre>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<h3>Smart Casting and Type Checking in Kotlin</h3>
 
-## Why This Repository?
+<ul>
+    <li><strong>Smart Casting:</strong> Kotlin automatically casts variables to the correct type when it can guarantee the type based on preceding code or <code>is</code> checks. This makes the code safer and eliminates the need for explicit type casts in many cases.</li>
+    <li><strong>Type Safety:</strong> If the Kotlin compiler cannot guarantee a valid cast, it generates a compile-time error, preventing runtime <code>ClassCastException</code>.</li>
+    <li><strong>Handling Multiple Types:</strong> The <code>when</code> expression combined with <code>is</code> checks makes it easy to handle variables that can be of different types at runtime, ensuring type safety and reducing errors.</li>
+</ul>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h2>How to Run</h2>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output demonstrating type checking and smart casting in Kotlin.</li>
+</ol>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<h2>License</h2>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<p>This project is licensed under the MIT License.</p>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h2>Author</h2>
 
-## Getting Started
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
-
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
-
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
