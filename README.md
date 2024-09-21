@@ -1,73 +1,94 @@
-# Kotlin Programming from A to Z
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<body>
 
-## Introduction
+<h1>Kotlin Abstract Properties Demonstration</h1>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<p>This repository contains a Kotlin application that demonstrates the use of abstract properties in Kotlin. In Kotlin, abstract classes can have abstract properties in addition to abstract functions. Concrete subclasses must provide an implementation for both abstract member functions and abstract properties.</p>
 
-## What You Will Learn
+<h2>Code Overview</h2>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<pre>
+<code>
+/**
+ * This file demonstrates the use of abstract properties in Kotlin.
+ *
+ * In Kotlin, abstract classes can also have abstract properties, not just abstract functions.
+ * Abstract properties:
+ * - Can be constructor or member-level properties.
+ * - Can be `val` or `var`.
+ * - Must be prefixed with the keyword `abstract`.
+ *
+ * Concrete subclasses must provide an implementation for both abstract member functions and abstract properties.
+ */
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+// Abstract class CommercialVehicle with an abstract property and an abstract function
+abstract class CommercialVehicle {
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    // Abstract property that must be implemented by subclasses
+    abstract val owner: String
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    // Abstract member function that must be implemented by subclasses
+    abstract fun load(contents: String)
+}
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+// Concrete class Lorry that provides implementations for the abstract property and function
+class Lorry(override val owner: String) : CommercialVehicle() {
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    // Override the abstract load() function
+    override fun load(contents: String) {
+        println("loading $contents")
+    }
+}
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+fun main() {
+    // Create an instance of Lorry and call its load() function
+    val lorry = Lorry("Smith and Co.")
+    lorry.load("Hay")
+}
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+/*
+ * Output:
+ * loading Hay
+ */
+</code>
+</pre>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<h3>Explanation</h3>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<ul>
+    <li>The <code>CommercialVehicle</code> abstract class defines an abstract <code>val owner</code> and an abstract function <code>load()</code>.</li>
+    <li>The <code>Lorry</code> class provides a concrete implementation for the <code>owner</code> property by marking it as a constructor property and using <code>override</code>.</li>
+    <li>The <code>load()</code> function is also implemented in <code>Lorry</code>, providing specific behavior.</li>
+    <li>The <code>main()</code> function demonstrates creating an instance of <code>Lorry</code> and using its functionality.</li>
+</ul>
 
-## Why This Repository?
+<h3>Abstract Properties and Functions</h3>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<p>
+- The <strong>Abstract Properties</strong>: The <code>CommercialVehicle</code> class defines an abstract property <code>owner</code> and an abstract member function <code>load()</code>. Any subclass of <code>CommercialVehicle</code> must provide concrete implementations for these.
+</p>
+<p>
+- The <strong>Concrete Subclass (Lorry)</strong>: The <code>Lorry</code> class provides an implementation for the <code>owner</code> property by making it a constructor property and implements the <code>load()</code> function to simulate loading contents.
+</p>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<h2>How to Run</h2>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output demonstrating the use of abstract properties in Kotlin.</li>
+</ol>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<h2>License</h2>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<p>This project is licensed under the MIT License.</p>
 
-## Getting Started
+<h2>Author</h2>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
-
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
