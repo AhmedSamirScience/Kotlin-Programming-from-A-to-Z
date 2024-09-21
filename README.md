@@ -1,73 +1,144 @@
-# Kotlin Programming from A to Z
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kotlin Inheritance and Overriding Member Functions Demonstration</title>
+</head>
+<body>
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<h1>Kotlin Inheritance and Overriding Member Functions Demonstration</h1>
 
-## Introduction
+<p>This repository contains a Kotlin application that demonstrates inheritance and how to override member functions in Kotlin. In Kotlin, member functions of a superclass can be overridden in subclasses to provide their own implementation, using the <code>override</code> keyword.</p>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<h2>Key Concepts</h2>
 
-## What You Will Learn
+<ul>
+    <li><strong>Overriding:</strong> Subclasses can override a member function of the superclass to provide their own implementation.</li>
+    <li><strong>open Keyword:</strong> Classes and functions in Kotlin are final by default. They must be explicitly marked with the <code>open</code> keyword to allow inheritance or overriding.</li>
+    <li><strong>override Keyword:</strong> The <code>override</code> keyword is required to override a function from the superclass, ensuring the compiler knows that the subclass intends to replace it.</li>
+</ul>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<h2>Code Overview</h2>
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+<pre>
+<code>
+/**
+ * Inheritance and Overriding Member Functions in Kotlin
+ * In Kotlin, overriding occurs when a member function is defined in both a superclass and one of its subclasses.
+ * The subclass's implementation replaces or extends the behavior of the superclass's method.
+ */
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+// Base class with open methods and properties
+open class Person(val name: String = "", var age: Int = 0) {
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    // Method to simulate a birthday
+    fun birthday() {
+        println("Happy birthday! You were $age")
+        age++
+        println("You are now $age")
+    }
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+    // Overridden toString method in Person
+    override fun toString(): String = "Person($name, $age)"
+}
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+// Subclass of Person with additional properties
+open class Employee(name: String, age: Int, val id: String) : Person(name, age) {
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+    // Additional property
+    var rateOfPay: Double = 7.5
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+    // Method to calculate pay based on hours worked
+    fun calculatePay(hoursWorked: Int): Double {
+        return hoursWorked * rateOfPay
+    }
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+    // Overridden toString method in Employee
+    override fun toString(): String = "Employee($name, $age, $id)"
+}
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+// Subclass of Employee with further properties
+class SalesPerson(name: String, age: Int, id: String, val region: String, val sales: Double) : Employee(name, age, id) {
 
-## Why This Repository?
+    // Method to calculate a sales bonus
+    fun bonus(): Double {
+        return sales * 0.5
+    }
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+    // Overridden toString method in SalesPerson
+    override fun toString(): String = "SalesPerson($name, $age, $id, $region, $sales)"
+}
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+fun main() {
+    // Creating instances of Person, Employee, and SalesPerson
+    val p = Person("Jasmine", 21)
+    val e = Employee("Adam", 23, "ABC123")
+    val s = SalesPerson("Phoebe", 32, "XYZ987", "South West", 905.55)
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+    // Printing the string representations of each instance
+    println(p)  // Output: Person(Jasmine, 21)
+    println(e)  // Output: Employee(Adam, 23, ABC123)
+    println(s)  // Output: SalesPerson(Phoebe, 32, XYZ987, South West, 905.55)
+}
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+/*
+ * Output:
+ * Person(Jasmine, 21)
+ * Employee(Adam, 23, ABC123)
+ * SalesPerson(Phoebe, 32, XYZ987, South West, 905.55)
+ */
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+/**
+ * Explanation:
+ *
+ * 1. **Class Hierarchy**:
+ *    - `Person` is the base class with properties `name` and `age`.
+ *    - `Employee` extends `Person` and adds the `id` property and a method to calculate pay.
+ *    - `SalesPerson` extends `Employee` and adds `region` and `sales` properties, as well as a method to calculate a bonus.
+ *
+ * 2. **Overriding toString**:
+ *    - The `toString()` method is overridden in each class to provide a customized string representation.
+ *    - `Person` prints `name` and `age`.
+ *    - `Employee` adds the `id` field to the output.
+ *    - `SalesPerson` includes additional properties `region` and `sales`.
+ *
+ * 3. **Overriding Rules**:
+ *    - The `override` keyword is mandatory to override methods in Kotlin.
+ *    - Each subclass provides its own version of `toString()`, which is called based on the type of the object.
+ */
+</code>
+</pre>
 
-## Getting Started
+<h3>Inheritance and Overriding in Kotlin</h3>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<ul>
+    <li><strong>Overriding Methods:</strong> The <code>toString()</code> method is overridden in each class (<code>Person</code>, <code>Employee</code>, and <code>SalesPerson</code>) to provide different string representations of instances.</li>
+    <li><strong>Using open and override:</strong></li>
+    <ul>
+        <li>The <code>Person</code> class and its <code>toString()</code> function are marked as <code>open</code>, allowing them to be overridden by subclasses.</li>
+        <li>The <code>override</code> keyword is required in the subclasses to replace the <code>toString()</code> method of the parent class.</li>
+    </ul>
+    <li><strong>Dynamic Dispatch:</strong> When <code>println()</code> is called on instances of <code>Person</code>, <code>Employee</code>, or <code>SalesPerson</code>, the appropriate <code>toString()</code> method is invoked depending on the runtime type of the object.</li>
+</ul>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<h2>How to Run</h2>
 
-## License
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output demonstrating inheritance and overriding member functions in Kotlin.</li>
+</ol>
 
-This project is licensed under the MIT License.
+<h2>License</h2>
 
-## Author
+<p>This project is licensed under the MIT License.</p>
 
-**Ahmed Samir** - Software Engineer
+<h2>Author</h2>
+
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
