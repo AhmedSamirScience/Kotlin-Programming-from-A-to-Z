@@ -1,73 +1,118 @@
-# Kotlin Programming from A to Z
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<body>
 
-## Introduction
+<h1>Kotlin Abstract Class Subclassing Demonstration</h1>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<p>This repository contains a Kotlin application that demonstrates how to subclass an abstract class in Kotlin. When subclassing an abstract class, concrete implementations for any abstract member functions in the parent class must be provided. The <code>override</code> keyword is used to implement these abstract functions.</p>
 
-## What You Will Learn
+<h2>Code Overview</h2>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<pre>
+<code>
+/**
+ * This file demonstrates how to subclass an abstract class in Kotlin.
+ *
+ * When subclassing an abstract class, we use the `:` symbol to represent inheritance and
+ * must provide concrete implementations for any abstract member functions in the parent class.
+ * The `override` keyword is used to implement abstract functions from the parent class.
+ */
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+// Abstract class Conveyance with abstract functions
+abstract class Conveyance {
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+    protected var fuel = 5.0
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+    // Abstract function to be implemented by subclasses
+    abstract fun consumeFuel()
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+    // Abstract function to be implemented by subclasses
+    abstract fun drive(distance: Int): Boolean
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    // Concrete function available to all subclasses
+    fun startup() {
+        while (fuel > 0) {
+            consumeFuel()
+        }
+    }
+}
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+// Concrete class Car that extends the abstract class Conveyance
+class Car : Conveyance() {
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+    // Override and implement the consumeFuel() function
+    override fun consumeFuel() {
+        fuel -= 1.0
+        println("consuming, remaining fuel: $fuel")
+    }
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+    // Override and implement the drive() function
+    override fun drive(distance: Int): Boolean {
+        println("Driven $distance miles")
+        return true
+    }
+}
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+fun main() {
+    // Create an instance of Car and treat it as a Conveyance
+    val c: Conveyance = Car()
 
-## Why This Repository?
+    // Start the car and consume fuel
+    c.startup()
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+    // Drive the car for a distance of 10 miles
+    val result = c.drive(10)
+    println(result)
+}
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+/*
+ * Output:
+ * consuming, remaining fuel: 4.0
+ * consuming, remaining fuel: 3.0
+ * consuming, remaining fuel: 2.0
+ * consuming, remaining fuel: 1.0
+ * consuming, remaining fuel: 0.0
+ * Driven 10 miles
+ * true
+ */
+</code>
+</pre>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<h3>Explanation</h3>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<ul>
+    <li>The <code>Conveyance</code> class is an abstract class with two abstract functions: <code>consumeFuel()</code> and <code>drive(Int): Boolean</code>.</li>
+    <li>The <code>Car</code> class subclasses <code>Conveyance</code> and provides concrete implementations for the abstract functions.</li>
+    <li>The <code>consumeFuel()</code> function decreases the <code>fuel</code> property, and the <code>drive()</code> function simulates driving a given distance.</li>
+    <li>The <code>main()</code> function demonstrates creating an instance of <code>Car</code>, invoking <code>startup()</code> to consume fuel, and then calling the <code>drive()</code> function.</li>
+</ul>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h3>Subclassing an Abstract Class</h3>
 
-## Getting Started
+<p>
+- The <strong>Abstract Class</strong>: The <code>Conveyance</code> class defines two abstract functions: <code>consumeFuel()</code> and <code>drive(Int): Boolean</code>. Subclasses must provide implementations for these functions.
+</p>
+<p>
+- The <strong>Concrete Subclass (Car)</strong>: The <code>Car</code> class extends <code>Conveyance</code> and provides concrete implementations for the abstract functions. It overrides the <code>consumeFuel()</code> function to decrease fuel and the <code>drive()</code> function to simulate driving a specific distance.
+</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<h2>How to Run</h2>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output demonstrating subclassing an abstract class and overriding abstract functions in Kotlin.</li>
+</ol>
 
-## License
+<h2>License</h2>
 
-This project is licensed under the MIT License.
+<p>This project is licensed under the MIT License.</p>
 
-## Author
+<h2>Author</h2>
 
-**Ahmed Samir** - Software Engineer
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
+
+</body>
+</html>
