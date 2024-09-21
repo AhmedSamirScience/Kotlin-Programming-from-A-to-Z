@@ -1,73 +1,110 @@
-# Kotlin Programming from A to Z
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<body>
 
-## Introduction
+<h1>Kotlin Open and Override Member Functions Demonstration</h1>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<p>This repository contains a Kotlin application that demonstrates how to declare and override member functions in Kotlin using the <code>open</code> and <code>override</code> keywords. In Kotlin, member functions are final by default, meaning they cannot be overridden unless explicitly marked with <code>open</code>. Subclasses can then provide their own implementation by using the <code>override</code> keyword.</p>
 
-## What You Will Learn
+<h2>Key Concepts</h2>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<ul>
+    <li><strong>open Keyword:</strong> Used to mark a member function that can be overridden by subclasses.</li>
+    <li><strong>override Keyword:</strong> Required in the subclass to override an open member function.</li>
+    <li><strong>Final by Default:</strong> If a function is not marked as <code>open</code>, it is implicitly final and cannot be overridden.</li>
+</ul>
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+<h2>Code Overview</h2>
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+<pre>
+<code>
+/**
+ * Declaring Member Functions as Open in Kotlin
+ * In Kotlin, member functions are final by default, meaning they cannot be overridden. To allow a member function to be overridden in a subclass, the function must be marked with the open keyword. The subclass can then override this function using the override keyword.
+ */
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+// Base class with an open member function
+open class Base {
+    // Open function that can be overridden in subclasses
+    open fun print(): Unit = println("Base print")
+}
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+// Subclass that overrides the open function
+class Derived : Base() {
+    // Override the print() function from Base
+    override fun print(): Unit = println("Derived print")
+}
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+fun main() {
+    // Creating an instance of Base and calling the print() function
+    val base = Base()
+    base.print()  // Output: Base print
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+    println("----------")
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+    // Creating an instance of Derived and calling the overridden print() function
+    val derived = Derived()
+    derived.print()  // Output: Derived print
+}
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+/*
+ * Output:
+ * Base print
+ * ----------
+ * Derived print
+ */
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+/**
+ * Explanation:
+ *
+ * 1. **Open and Override**:
+ *    - The `Base` class defines an open member function `print()` which can be overridden by subclasses.
+ *    - The `Derived` class extends `Base` and overrides the `print()` function to provide its own implementation.
+ *
+ * 2. **Dynamic Dispatch**:
+ *    - When `print()` is called on an instance of `Base`, the `Base` version of the function is executed.
+ *    - When `print()` is called on an instance of `Derived`, the overridden version in `Derived` is executed.
+ *
+ * 3. **Default Final Behavior**:
+ *    - By default, member functions in Kotlin are `final` and cannot be overridden unless they are explicitly marked as `open`.
+ */
 
-## Why This Repository?
+/**
+ * Summary:
+ * Declaring Open Functions: The Base class marks its print() function as open, allowing it to be overridden in subclasses like Derived.
+ *
+ * Overriding Functions: The Derived class overrides the print() function, providing its own implementation. The override keyword is mandatory for overriding functions.
+ *
+ * Dynamic Dispatch: The function call is dynamically dispatched based on the runtime type of the object. When called on an instance of Base, the base class implementation is used. When called on an instance of Derived, the derived class implementation is used.
+ */
+</code>
+</pre>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h3>Open and Override in Kotlin</h3>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<ul>
+    <li><strong>Open Functions:</strong> The <code>Base</code> class defines an open function <code>print()</code>, allowing it to be overridden in the subclass.</li>
+    <li><strong>Override Functions:</strong> The <code>Derived</code> class overrides the <code>print()</code> function and provides its own implementation using the <code>override</code> keyword.</li>
+    <li><strong>Dynamic Dispatch:</strong> The function call is dispatched based on the runtime type of the object. Calling <code>print()</code> on <code>Base</code> executes the base implementation, while calling it on <code>Derived</code> executes the derived implementation.</li>
+</ul>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<h2>How to Run</h2>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output demonstrating how open and override member functions work in Kotlin.</li>
+</ol>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h2>License</h2>
 
-## Getting Started
+<p>This project is licensed under the MIT License.</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
+<h2>Author</h2>
 
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
