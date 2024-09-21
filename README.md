@@ -1,73 +1,95 @@
-# Kotlin Programming from A to Z
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<body>
 
-## Introduction
+<h1>Kotlin Final Property Demonstration</h1>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<p>This repository contains a Kotlin application that demonstrates how to close properties in Kotlin using the <code>final</code> keyword. In Kotlin, both member properties and constructor properties can be marked as <code>final</code> to prevent subclasses from overriding the property. The <code>final</code> keyword is used alongside <code>override</code> to close the property in a subclass, making it impossible for further subclasses to override it.</p>
 
-## What You Will Learn
+<h2>Code Overview</h2>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<pre>
+<code>
+/**
+ * This file demonstrates how to close properties in Kotlin using the `final` keyword.
+ *
+ * In Kotlin, properties (both member properties and constructor properties) can be marked as `final`.
+ * This prevents subclasses from overriding the property. The `final` keyword is used alongside `override` to
+ * close the property in a subclass, making it impossible for further subclasses to override it.
+ */
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+open class Food(open val type: String = "generic")
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+open class Cake(
+    /**
+     * Overrides the `type` property from Food but marks it as final,
+     * preventing any further overriding in subclasses of Cake.
+     */
+    final override val type: String = "Sponge"
+) : Food()
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+open class Biscuit(
+    /**
+     * Overrides the `type` property from Food, but keeps it open for further overriding
+     * in subclasses of Biscuit.
+     */
+    override val type: String = "Sweet"
+) : Food()
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+fun main() {
+    // Demonstrating the behavior of the `type` property in different subclasses
+    val cake = Cake()
+    val biscuit = Biscuit()
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+    println("Cake type: ${cake.type}")    // Output: Sponge
+    println("Biscuit type: ${biscuit.type}") // Output: Sweet
+}
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+/*
+ * Output:
+ * Cake type: Sponge
+ * Biscuit type: Sweet
+ */
+</code>
+</pre>
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+<h3>Explanation</h3>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<ul>
+    <li>The <code>Food</code> class defines an open property <code>type</code>, allowing subclasses to override it.</li>
+    <li>The <code>Cake</code> class overrides the <code>type</code> property and marks it as <code>final</code>, preventing further overrides in subclasses of <code>Cake</code>.</li>
+    <li>The <code>Biscuit</code> class overrides the <code>type</code> property but does not mark it as <code>final</code>, meaning that subclasses of <code>Biscuit</code> can still override the property.</li>
+</ul>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<h3>Open vs Final Properties</h3>
 
-## Why This Repository?
+<p>
+- The <strong>Open Property</strong>: The <code>Food</code> class has an open property <code>type</code>, allowing subclasses to override it.
+</p>
+<p>
+- The <strong>Final Override in Cake</strong>: In the <code>Cake</code> class, the <code>type</code> property is overridden and marked as final, meaning that any subclass of <code>Cake</code> cannot further override this property.
+</p>
+<p>
+- The <strong>Still Open in Biscuit</strong>: In contrast, the <code>Biscuit</code> class overrides the <code>type</code> property but does not mark it as final, allowing further subclasses to override it if needed.
+</p>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<h2>How to Run</h2>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output demonstrating the behavior of open and final properties in Kotlin.</li>
+</ol>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<h2>License</h2>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<p>This project is licensed under the MIT License.</p>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<h2>Author</h2>
 
-## Getting Started
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
-
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
-
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
