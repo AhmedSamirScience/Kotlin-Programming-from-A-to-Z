@@ -1,73 +1,91 @@
-# Kotlin Programming from A to Z
 
-Welcome to the ultimate Kotlin programming repository! This repository is a comprehensive resource that will take you through the journey of learning Kotlin, from the basics to advanced concepts. Whether you are a beginner or an experienced developer, this repository will provide you with the knowledge and source code examples needed to master Kotlin programming.
+<body>
 
-## Introduction
+<h1>Kotlin Extending Behavior with Super Demonstration</h1>
 
-Kotlin is a modern, expressive, and powerful programming language that is widely used for Android development, server-side applications, and much more. This repository is designed to be your go-to guide for learning Kotlin programming in a structured and detailed manner. It covers every chapter of the book "Kotlin Programming from A to Z" and provides source code examples for each topic to enhance your understanding.
+<p>This repository contains a Kotlin application that demonstrates how to extend the behavior of a method from a parent class by calling the parent class's method using the <code>super</code> keyword. This allows subclasses to augment the functionality provided by the superclass while still preserving the superclass's implementation.</p>
 
-## What You Will Learn
+<h2>Key Concepts</h2>
 
-This repository is divided into several sections, each focusing on a specific aspect of Kotlin programming:
+<ul>
+    <li><strong>super Keyword:</strong> Used to invoke the parent class's implementation of a function.</li>
+    <li><strong>Extending Behavior:</strong> Instead of completely replacing the parent class’s functionality, you can extend it by calling the parent's function and adding your own behavior before or after.</li>
+</ul>
 
-### Introduction
-- **What is Kotlin?** Understand Kotlin, its versions, libraries, and execution environment.
-- **Running Kotlin Programs:** Learn different ways to run Kotlin, including REPL and IDE usage.
-- **First Kotlin Program:** 
-  - **Hello World:** Create your first Kotlin program.
-  - **Variables:** Explore `val` and `var`, string formatting, and naming conventions.
+<h2>Code Overview</h2>
 
-### Flow of Control
-- **Operators and Control Statements:** Learn about comparison, logical, and assignment operators, and control flow with `if`, `when`, and loops.
-- **Loop Control Statements:** Use `break` and `continue` effectively in loops.
+<pre>
+<code>
+/**
+ * This example demonstrates how to extend the behavior of a parent class's method using the `super` keyword in Kotlin.
+ * The `Derived` class adds additional functionality to the `print()` method while still calling the `Base` class's implementation.
+ */
 
-### Functions in Kotlin
-- **Defining Functions:** Understand function parameters, default values, and named arguments.
-- **Anonymous and Lambda Functions:** Discover the power of concise function literals.
+// Base class with an open function that can be overridden
+open class Base {
+    open fun print(): Unit = println("Base")
+}
 
-### Higher Order Functions
-- **Concepts and Examples:** Grasp higher-order functions, returning functions, and using lambdas.
+// Derived class that extends the behavior of the print function
+class Derived : Base() {
+    override fun print(): Unit {
+        println("Derived before")
+        // Call the parent class's print function
+        super.print()
+        println("Derived after")
+    }
+}
 
-### Kotlin Classes
-- **Classes and Objects:** Define classes, constructors, properties, and member functions.
-- **Inheritance and Interfaces:** Implement inheritance, interfaces, and understand companion objects.
+fun main() {
+    // Creating an instance of Derived and calling the print function
+    val derived = Derived()
+    derived.print()
+}
 
-### Advanced Kotlin Features
-- **Data and Sealed Classes:** Define and use data classes and sealed classes for advanced data handling.
-- **Inline and Extension Functions:** Optimize performance with inline functions and extend classes with extension functions.
+/*
+ * Output:
+ * Derived before
+ * Base
+ * Derived after
+ */
 
-### Collections
-- **Arrays and Lists:** Create and manipulate arrays and lists.
-- **Sets and Maps:** Work with sets and maps for unique and key-value data handling.
+/**
+ * Explanation:
+ *
+ * - The `Base` class defines an open `print()` method that prints "Base".
+ * - The `Derived` class overrides the `print()` method, but it uses `super.print()` to call the parent class's `print()` method.
+ * - The `Derived` class's `print()` method prints "Derived before" and "Derived after" in addition to the parent class's print output ("Base").
+ * - The `super` keyword tells Kotlin to look for the method implementation in the superclass (`Base`).
+ */
+</code>
+</pre>
 
-### Functional Programming
-- **Lambdas and Collections:** Utilize lambdas with collections for functional programming.
+<h3>Extending Behavior with Super in Kotlin</h3>
 
-### Error Handling
-- **Exception Handling:** Handle errors and exceptions gracefully.
+<ul>
+    <li><strong>Extending Behavior:</strong> The <code>Derived</code> class extends the behavior of the <code>print()</code> method by adding its own logic before and after calling <code>super.print()</code>. This allows the subclass to augment the functionality provided by the superclass.</li>
+    <li><strong>Using super:</strong> The <code>super</code> keyword is used to invoke the parent class’s version of a function. This is useful when you want to retain some functionality from the parent class while adding your own behavior in the subclass.</li>
+    <li><strong>Dynamic Dispatch:</strong> When <code>derived.print()</code> is called, the <code>Derived</code> class’s <code>print()</code> method is executed, but it also calls <code>super.print()</code> to run the <code>Base</code> class’s <code>print()</code> method, showing both outputs.</li>
+</ul>
 
-## Why This Repository?
+<h2>How to Run</h2>
 
-There are many resources available for learning Kotlin, but this repository stands out for several reasons:
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone &lt;repository-url&gt;</code></pre>
+    </li>
+    <li>Open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio).</li>
+    <li>Navigate to the <code>main</code> function.</li>
+    <li>Run the <code>main</code> function to see the output demonstrating how to extend a method using <code>super</code> in Kotlin.</li>
+</ol>
 
-- **Comprehensive Coverage:** This repository covers every chapter of the book "Kotlin Programming from A to Z," providing a complete learning experience from basics to advanced topics.
+<h2>License</h2>
 
-- **Source Code Examples:** Each chapter is accompanied by source code examples that illustrate the concepts discussed. These examples are designed to be practical and easy to understand, helping you to see how the theory is applied in real-world scenarios.
+<p>This project is licensed under the MIT License.</p>
 
-- **Clear and Concise Explanations:** The explanations are written in a clear and concise manner, making complex topics easy to understand. The goal is to make learning Kotlin as accessible as possible.
+<h2>Author</h2>
 
-- **Attractive and Engaging:** The content is presented in an attractive and engaging format, making it enjoyable to read and learn. The focus is on keeping the reader motivated and excited about learning Kotlin.
+<p><strong>Ahmed Samir</strong> - Software Engineer</p>
 
-## Getting Started
-
-To get started with this repository, simply clone the repository to your local machine and open the project in your preferred IDE (e.g., IntelliJ IDEA, Android Studio). Navigate through the different sections and start exploring the source code examples and explanations.
-
-We hope this repository helps you in your journey to mastering Kotlin programming. Happy coding!
-
-## License
-
-This project is licensed under the MIT License.
-
-## Author
-
-**Ahmed Samir** - Software Engineer
+</body>
+</html>
